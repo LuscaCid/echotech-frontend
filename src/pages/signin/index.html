@@ -4,11 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../../../styles/globals.css">
+    <link rel="stylesheet" href="../../../styles/constants.css">
+    <title>EcoTech - Login</title>
 </head>
 <body>
     <div class="app">
-        
+        <form>
+            <div class="input-wrapper">
+                <label for="usuario">Nome de usuário</label>
+                <input 
+                    type="text" 
+                    name="usuario" 
+                    id="input-usuário"
+                    placeholder="Usuário"
+                >
+    
+            </div>
+            <div class="input-wrapper">
+                <label 
+                    for="usuario">
+                    Senha
+                </label>
+                <input 
+                    type="password" 
+                    name="senha" 
+                    id="input-senha" 
+                    placeholder="Senha"
+                >
+            </div>
+            <div class="remember-me">
+                <label 
+                    for="lembrar">
+                    Lembrar de mim?
+                </label>
+                <input 
+                    id="check-lembrar" 
+                    name="lembrar" 
+                    type="checkbox"
+                >
+
+            </div>
+            <button id="btn-entrar" type="submit">
+                Entrar
+            </button>
+        </form>
     </div>
 </body>
 </html>
