@@ -13,3 +13,10 @@ body, button, textarea, input {
 :focus {
     outline: var(--green-300);
 }
+.sr-only {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+    position: absolute;
+}
