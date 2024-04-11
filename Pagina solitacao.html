@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="./styles/paginasolicitacao.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Entrega de Resíduos</title>
+    </head>
+<body>
+    <header>
+        <h1>Solicitação de Entrega de Resíduos</h1>
+    </header>
+    
+    <main>
+        <form action="processamento.php" method="post">
+            <label for="tipo_residuo">Tipo de Resíduo:</label>
+            <select id="tipo_residuo" name="tipo_residuo">
+                <option value="residuo1">Resíduo 1</option>
+                <option value="residuo2">Resíduo 2</option>
+                <option value="residuo3">Resíduo 3</option>
+                <!-- Adicione mais opções conforme necessário -->
+            </select>
+
+            <form action="processamento.php" method="post">
+                <label for="tipo_residuo">Material:</label>
+                <select id="tipo_residuo" name="tipo_residuo">
+                    <option value="residuo1">Material 1</option>
+                    <option value="residuo2">Material 2</option>
+                    <option value="residuo3">Material 3</option>
+                    <!-- Adicione mais opções conforme necessário -->
+                </select>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="text" id="quantidade" name="quantidade" required>
+            
+            <label for="endereco">Endereço de Entrega:</label>
+            <input type="text" id="endereco" name="endereco" required>
+            
+            <button type="submit">Enviar Solicitação</button>
+        </form>
+    </main>
+</body>
+</html>
