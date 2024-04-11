@@ -107,7 +107,7 @@
     "yaml": "^2.4.1"
   },
   "scripts": {
-    "tailbuild" : ""
+    "tailbuild" : "npx tailwindcss -i ./styles/globals.css -o ./dist/output.css --watch"
   },
   "keywords": [],
   "author": "",

@@ -11,16 +11,6 @@
     --gray-800: #1f2937;
     --gray-900: #111827;
     --gray-950: #030712;
-    /* Tons de verde do Tailwind */
-    --green-100: #f0fff4;
-    --green-200: #c6f6d5;
-    --green-300: #9ae6b4;
-    --green-400: #68d391;
-    --green-500: #48bb78;
-    --green-600: #38a169;
-    --green-700: #2f855a;
-    --green-800: #276749;
-    --green-900: #22543d;
 
       /* Tons de azul do Tailwind */
     --blue-100: #ebf8ff;
@@ -32,7 +22,7 @@
     --blue-700: #2b6cb0;
     --blue-800: #2c5282;
     --blue-900: #2a4365;
-    /* .lime variables*/
+    /* .green variables*/
     --green-50: #f0fdf4;
     --green-100: #dcfce7;
     --green-200: #bbf7d0;

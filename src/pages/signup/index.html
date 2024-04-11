@@ -9,9 +9,9 @@
     <title>EcoTech - Login</title>
 </head>
 <body>
-    <header>
-        <h1>Eco</h1>
-        <a href="../signin/index.html">login</a>
+    <header class="shadow-2xl">
+        <h1>EcoTech</h1>
+        <a href="../signin/index.html">ir para login</a>
     </header>
 
     <div class="app">
@@ -22,43 +22,60 @@
             </aside>
             <form>
               <legend>
-                  Login
+                  Cadastro
               </legend>
               <div class="input-wrapper">
-                  <label for="usuario" class="sr-only">Nome de usuário</label>
-                  <input           
-                      type="text" 
-                      name="usuario" 
-                      id="input-usuário"
-                      placeholder="Usuário"
-                  >
+                    <label for="usuario" class="sr-only">Nome de usuário</label>
+                    <input           
+                        type="text" 
+                        name="usuario" 
+                        id="input-usuário"
+                        placeholder="Usuário"
+                    >
               </div>
               <div class="input-wrapper">
-                  <label 
-                      class="sr-only"
-                      for="usuario">
-                      Senha
-                  </label>
-                  <input 
-                      type="password" 
-                      name="senha" 
-                      id="input-senha" 
-                      placeholder="Senha"
-                  >
+                <label for="usuario" class="sr-only">CEP</label>
+                <input           
+                    type="text" 
+                    name="cep" 
+                    id="input-cep"
+                    placeholder="CEP"     
+                >
+            </div>
+              <div class="input-wrapper">
+                <label for="usuario" class="sr-only">Bairro</label>
+                <input           
+                    type="text" 
+                    name="bairro" 
+                    id="input-bairro"
+                    placeholder="Bairro"
+                >
+            </div>
+            <div class="input-wrapper">
+                <label for="usuario" class="sr-only">Nome da rua</label>
+                <input           
+                    type="text" 
+                    name="rua" 
+                    id="input-rua"
+                    placeholder="Nome da rua"
+                >
+            </div>
+              <div class="input-wrapper">
+                    <label 
+                        class="sr-only"
+                        for="input-senha">
+                        Senha
+                    </label>
+                    <input 
+                        type="password" 
+                        name="senha" 
+                        id="input-senha" 
+                        placeholder="Senha"
+                    >
               </div>
-              <div class="remember-me">
-                  <label 
-                      for="lembrar">
-                      Lembrar de mim?
-                  </label>
-                  <input 
-                      id="check-lembrar" 
-                      name="lembrar" 
-                      type="checkbox"
-                  >
-              </div>
-              <button id="btn-entrar" type="submit">
-                  Entrar
+              
+              <button id="btn-registrar" type="submit">
+                  Registrar
               </button>
           </form>
         </div>
