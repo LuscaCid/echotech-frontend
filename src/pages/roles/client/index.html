@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +18,8 @@
       </button>
     </div>
   </header>
-  <main class="w-full -mt-12">
-    <section class="flex gap-3 m-auto w-fit mt-2 text-zinc-300">
+  <main class="w-full -mt-12 flex flex-col gap-4">
+    <section class="flex gap-3 m-auto w-fit my-4 text-zinc-300">
       <div class="w-96 rounded-md bg-zinc-700  p-8 text-2xl " >
         <div class="flex justify-between w-full items-center mb-5">
           <span>entradas</span>
@@ -30,43 +30,42 @@
       <div class="w-96 rounded-md bg-zinc-700  p-8 text-2xl " >
         <div class="flex justify-between w-full items-center mb-5">
           <span>saídas</span>
-          <img src="../../../assets/outputs.svg" alt="">
+          <img src="../../../assets/outputs.svg" alt="setinha para baixo">
         </div> 
         <span>200 ecos</span>
       </div>
       <div class="w-96 rounded-md bg-green-600  p-8 text-2xl " >
         <div class="flex justify-between w-full items-center mb-5">
           <span>saldo</span>
-          <img src="../../../assets/coin.svg" alt="">
+          <img src="../../../assets/coin.svg" alt="icone de cifrão representando dinheiro.">
         </div> 
         
       </div>
     </section>
-    <table class="border-collapse">
-      <thead>
-        <tr>
-          <th>Material</th>
-          <th>Medida</th>
-          <th>Data de inserção</th>
-          <th>Total Ecocoins</th>
-        </tr>
-    
-      </thead>
-      <tbody>
-        <tr>
-          <td>Plastico</td>
-          <td>40kg</td>
-          <td>18/11/2004</td>
-          <td>400</td>
-        </tr>
-        <tr>
-          <td>Plastico</td>
-          <td>40kg</td>
-          <td>18/11/2004</td>
-          <td>400</td>
-        </tr>
-      </tbody>
-    </table>
+    <section class="w-[740px] m-auto mt-2 flex gap-2">
+      <input
+        class="text-2xl text-white w-full rounded-md p-4 bg-zinc-700 border-zinc-600 border"
+        placeholder="Pesquisar" 
+        type="text">
+      <button class="bg-none border border-zinc-800 hover:bg-zinc-700 rounded-md p-2 transition duration-200 ">
+        <img src="../../../assets/search.svg" alt="icone de loopa">
+      </button>
+    </section>
+    <footer class="w-[740px] m-auto flex flex-col gap-2">
+      
+      <div class="flex flex-row px-4 py-6  justify-between w-full text-2xl text-zinc-300 bg-zinc-800 rounded-md">
+        <span id="material" class="">Sacola plástica</span>
+        <span id="quantidade">50kg</span>
+        <span id="retorno">R$20,00</span>
+        <div id="status" class=""></div>
+      </div>
+      <div class="flex flex-row px-4 py-6 justify-between w-full text-2xl text-zinc-300 bg-zinc-800 rounded-md">
+        <span id="material" class="">Sacola plástica</span>
+        <span id="quantidade">50kg</span>
+        <span id="retorno">R$20,00</span>
+        <div id="status" class=""></div>
+      </div>
+    </footer>
   </main>
 </body>
 </html>

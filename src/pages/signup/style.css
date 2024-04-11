@@ -35,8 +35,8 @@ header a {
   border: 1px solid var(--green-600);
 }
 header a:hover{
-    transition: background 0.12s;
-    background-color: var(--green-600);
+  transition: background 0.12s;
+  background-color: var(--green-600);
 }
 .app {
   border-radius: 7px;
