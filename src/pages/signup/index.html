@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../../../styles/globals.css">
+    <link rel="stylesheet" href="../../../styles/constants.css">
+    <title>EcoTech - Login</title>
+</head>
+<body>
+    <header>
+        <h1>Eco</h1>
+        <a href="../signin/index.html">login</a>
+    </header>
+
+    <div class="app">
+            
+            <aside >
+                <h1>W5I</h1>
+                <img class="image" src="../../assets/login-aside.svg" alt="">
+            </aside>
+            <form>
+              <legend>
+                  Login
+              </legend>
+              <div class="input-wrapper">
+                  <label for="usuario" class="sr-only">Nome de usuário</label>
+                  <input           
+                      type="text" 
+                      name="usuario" 
+                      id="input-usuário"
+                      placeholder="Usuário"
+                  >
+              </div>
+              <div class="input-wrapper">
+                  <label 
+                      class="sr-only"
+                      for="usuario">
+                      Senha
+                  </label>
+                  <input 
+                      type="password" 
+                      name="senha" 
+                      id="input-senha" 
+                      placeholder="Senha"
+                  >
+              </div>
+              <div class="remember-me">
+                  <label 
+                      for="lembrar">
+                      Lembrar de mim?
+                  </label>
+                  <input 
+                      id="check-lembrar" 
+                      name="lembrar" 
+                      type="checkbox"
+                  >
+              </div>
+              <button id="btn-entrar" type="submit">
+                  Entrar
+              </button>
+          </form>
+        </div>
+</body>
+</html>
