@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoTec</title>
+    <!-- Adiciona a biblioteca Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            font-size: 62.5%;
+            --green-300: #4CAF50; /* Verde */
+            --green-400: #388E3C; /* Verde mais escuro */
+            --overlay-color: rgba(0, 0, 0, 0.5); /* Overlay semi-transparente preto */
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: "Roboto", sans-serif;
+            background-image: url('https://nortempo.com/wp-content/uploads/2023_06_05_dia-del-medio-ambiente-768x401.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff; /* Branco */
+            position: relative;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--overlay-color); /* Adiciona o overlay semi-transparente */
+            z-index: 1;
+            pointer-events: none; /* Permite que cliques passem pelo overlay */
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            position: relative; /* Adiciona posição relativa para ajustar z-index */
+            z-index: 2; /* Ajusta z-index para manter o cabeçalho sobre o overlay */
+        }
+        header h1 {
+            font-size: 3.5rem; /* Aumenta um pouco mais o tamanho do texto EcoTec */
+            color: var(--green-300); /* Verde */
+            display: flex;
+            align-items: center; /* Alinha verticalmente com o símbolo */
+        }
+        .leaf-icon {
+            margin-right: 10px; /* Espaçamento entre o texto e o símbolo */
+            font-size: 2.5rem; /* Tamanho do símbolo */
+        }
+        .social-icons {
+            display: flex;
+            align-items: center;
+        }
+        .social-icons a {
+            color: #ffffff; /* Branco */
+            margin-left: 15px; /* Aumenta o espaço entre os ícones */
+            text-decoration: none;
+            font-size: 2rem; /* Aumenta o tamanho dos ícones */
+        }
+        .main-content {
+            text-align: center;
+            padding: 20px;
+            position: relative; /* Adiciona posição relativa */
+            z-index: 2; /* Ajusta z-index para manter o conteúdo sobre o overlay */
+        }
+        .cta-button {
+            background-color: var(--green-300); /* Verde */
+            color: #ffffff; /* Branco */
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            margin-right: 20px; /* Espaçamento entre os botões */
+            margin-bottom: 10px; /* Espaçamento abaixo dos botões */
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%; /* Ajusta a altura para cobrir toda a imagem de fundo */
+            background-color: var(--green-400);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        .cta-button:hover::before {
+            left: 0;
+        }
+        .cta-button span {
+            position: relative;
+            z-index: 1;
+        }
+        .cta-button::after {
+            content: '\f178'; /* Unicode para a seta direita */
+            font-family: 'Font Awesome 5 Free';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            transition: right 0.3s ease;
+        }
+        .cta-button:hover::after {
+            right: 20px;
+        }
+        @media (min-width: 768px) {
+            header {
+                margin-bottom: 40px;
+            }
+            .main-content {
+                padding: 40px;
+            }
+            .header-links {
+                display: flex;
+                align-items: center;
+            }
+            .header-links a {
+                color: #ffffff; /* Branco */
+                margin-right: 20px; /* Espaçamento entre os links */
+                font-size: 2rem; /* Aumenta o tamanho dos links */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div> <!-- Adiciona o overlay aqui -->
+    <header>
+        <h1><span class="leaf-icon">&#127810;</span>EcoTec</h1>
+        <div class="header-links">
+            <a href="#" style="color: white;">Página Inicial</a>
+            <a href="#" style="color: white;">Saiba Mais Sobre Nós</a>
+            <div class="social-icons">
+                <!-- Corrigindo os ícones das redes sociais -->
+                <a href="#" style="color: white;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: white;"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <a href="#" class="cta-button">Cadastre-se</a>
+        <h2>Bem-vindo ao EcoTec</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida magna eget velit maximus, id tempor risus vestibulum.</p>
+    </div>
+</body>
+</html>
