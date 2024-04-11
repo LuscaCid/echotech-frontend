@@ -32,11 +32,11 @@ header a {
     background: none;
     cursor: pointer;
     color: white;
-    border: 1px solid var(--gray-900);
+    border: 1px solid var(--green-600);
 }
 header a:hover{
     transition: background 0.12s;
-    background-color: var(--gray-900);
+    background-color: var(--green-600);
 }
 .app {
     border-radius: 7px;
