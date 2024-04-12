@@ -11,6 +11,9 @@
 :root {
     font-size: 62.5%;
 }
+body, button, input,textarea {
+    -webkit-font-smoothing: antialiased;
+  }
 body, button, textarea, input {
     font-family: "Roboto", sans-serif;
 

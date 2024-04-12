@@ -1,0 +1,32 @@
+{
+    "usuarios" : [
+        {
+            "name" : "zezin",
+            "age"  : 12 
+        },
+        {   
+            "name" : "da manga",
+            "age"  : 23 
+        }   
+    ],  
+    "historico" : [
+        {   
+            "data_solicitacao" : "19/03/2024",  
+            "material": "plastico",
+            "status" : "aproved",
+            "ecocoins" : 40
+        },
+        {   
+            "data_solicitacao" : "19/03/2024",  
+            "material": "plastico",
+            "status" : "aproved",
+            "ecocoins" : 40
+        },
+        {   
+            "data_solicitacao" : "19/03/2024",  
+            "material": "plastico",
+            "status" : "aproved",
+            "ecocoins" : 40
+        }
+    ]
+}

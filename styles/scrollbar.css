@@ -1,0 +1,11 @@
+::-webkit-scrollbar-track { /** é todo o preenchimento */
+    background: rgba(43, 43, 43, 0.678); /* 43, 43, 43 */ /* 156, 156, 156 */
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {/** é apenas onde segura para rolar */
+    background-color: rgb(156, 156, 156) ;
+    border-radius: 99px;
+  }

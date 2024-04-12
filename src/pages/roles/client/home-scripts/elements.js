@@ -1,9 +1,10 @@
-export function ElementsFactory () {
-    const inputSearch = document.getElementById("input-search");
+export default function ElementsFactory () {
+    const inputPesquisa = document.getElementById("input-pesquisa");
     
-    const buttonSearch = document.getElementById("");
+    const botaoPesquisa = document.getElementById("botao-pesquisa");
 
     return {
-        inputSearch
+        inputPesquisa,
+        botaoPesquisa
     };
 }
