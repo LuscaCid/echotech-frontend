@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <link rel="stylesheet" href="./styles/paginasolicitacao.css">
-    <link rel="stylesheet" href="./styles/constants.css">
+    <link rel="stylesheet" href="../../../../styles/paginasolicitacao.css">
+    <link rel="stylesheet" href="../../../../styles/constants.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitação de Entrega de Resíduos</title>
+    <title>Cliente - Solicitações</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,11 +17,18 @@
         header {
             background-color: var(--gray-800);
             color: #fff;
-            padding: 20px;
+            padding: 25px 24px 54px;
             display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--gray-700);
             justify-content: flex-start; /* Ajusta os botões para o lado esquerdo */
         }
-
+        header a {
+            text-decoration: none;
+            color: var(--gray-100);
+            font-weight: 700;
+            font-size: 23px;
+        }
         header button {
             margin-right: 10px; /* Adiciona um espaço entre os botões */
             background: none;
@@ -88,6 +95,7 @@
 </head>
 <body>
     <header>
+        <a href="./index.html">EcoTech</a>
         <div>
             <button>Logout</button>
             <button>Voltar</button>
