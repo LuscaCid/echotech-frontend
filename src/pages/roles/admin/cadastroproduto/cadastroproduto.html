@@ -12,9 +12,16 @@
             color: #fff;
             padding: 20px;
             display: flex;
-            justify-content: flex-end; /* Ajusta os botões para o lado esquerdo */
+            justify-content: space-between  ;
+            align-items: center; /* Ajusta os botões para o lado esquerdo */
         }
-       
+        header a {
+            
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--gray-100);
+        }
         header button:hover {
             background-color: var(--green-600 );
         }
@@ -23,6 +30,7 @@
 </head>
 <body>
     <header>
+        <a href="../paginahomefuncionario/index.html">EcoTech</a>
         <div>
             <button class="logout-btn">Logout</button>
             <button class="voltar-btn">Voltar</button>
