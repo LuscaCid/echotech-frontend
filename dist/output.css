@@ -603,6 +603,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -681,6 +685,10 @@ video {
 
 .max-h-\[350px\] {
   max-height: 350px;
+}
+
+.max-h-\[330px\] {
+  max-height: 330px;
 }
 
 .w-96 {
@@ -765,6 +773,10 @@ video {
   border-color: rgb(245 245 245 / var(--tw-divide-opacity));
 }
 
+.self-end {
+  align-self: flex-end;
+}
+
 .overflow-auto {
   overflow: auto;
 }
@@ -787,6 +799,10 @@ video {
 
 .rounded {
   border-radius: 0.25rem;
+}
+
+.rounded-none {
+  border-radius: 0px;
 }
 
 .rounded-t-lg {
