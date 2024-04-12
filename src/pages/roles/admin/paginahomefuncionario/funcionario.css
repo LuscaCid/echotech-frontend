@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+
+}
+body {
+  
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Define o fundo como preto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Garante que a logo seja centralizada verticalmente na tela */
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #18181b;
+    color: #fff;
+    padding: 20px;
+    width: 200px;
+    height: 100vh;
+    z-index: 1; /* Garante que a barra lateral fique sobre a logo */
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s; /* Adiciona uma transição suave para a mudança de cor */
+}
+
+.sidebar ul li a:hover {
+    color: #00ff00; /* Altera a cor para verde ao passar o mouse */
+}
+
+.logo {
+    background-image: url('https://img.freepik.com/fotos-premium/logotipo-ecologico-hojas-verdes-aisladas-sobre-fondo-negro-bombilla-concepto-proteccion-medio-ambiente_370059-2132.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 400px; /* Largura da logo aumentada */
+    height: 400px; /* Altura da logo aumentada */
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+

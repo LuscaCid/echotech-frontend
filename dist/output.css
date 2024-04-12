@@ -566,6 +566,10 @@ video {
   border-width: 0;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -593,6 +597,10 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.block {
+  display: block;
 }
 
 .flex {
