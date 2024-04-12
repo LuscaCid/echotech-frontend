@@ -8,7 +8,6 @@
   "name": "echotech-frontend",
   "version": "1.0.0",
   "main": "postcss.config.js",
-  
   "dependencies": {
     "ansi-regex": "^6.0.1",
     "ansi-styles": "^6.2.1",
@@ -52,6 +51,7 @@
     "isexe": "^2.0.0",
     "jackspeak": "^2.3.6",
     "jiti": "^1.21.0",
+    "json-server": "^1.0.0-alpha.23",
     "lilconfig": "^2.1.0",
     "lines-and-columns": "^1.2.4",
     "lru-cache": "^10.2.0",
@@ -107,7 +107,8 @@
     "yaml": "^2.4.1"
   },
   "scripts": {
-    "tailbuild" : "npx tailwindcss -i ./styles/globals.css -o ./dist/output.css --watch"
+    "server" : "npx json-server ./server.json -p 3000",
+    "tailbuild": "npx tailwindcss -i ./styles/globals.css -o ./dist/output.css --watch"
   },
   "keywords": [],
   "author": "",
