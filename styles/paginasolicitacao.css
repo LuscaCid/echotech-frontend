@@ -6,12 +6,7 @@ body {
     overflow-x: hidden; /* Remove a barra de rolagem horizontal */
 }
 
-header {
-    background-color: var(--gray-800);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
+
 
 h2 {
     color: #fff; /* Cor do texto */
@@ -66,17 +61,7 @@ button:hover {
     background-color: #45a049;
 }
 
-header {
-    height: 40px;
-    position: relative;
-}
 
-header div {
-    position: absolute;
-    right: 0;    
-}
 
-header div button {
-    font-weight: bold;
-    font-size: 16px;
-}
+
+

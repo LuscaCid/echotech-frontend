@@ -8,7 +8,7 @@
 body {
   
     font-family: Arial, sans-serif;
-    background-color: #000; /* Define o fundo como preto */
+    background-color:var(--gray-900);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,7 +20,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #18181b;
+    background-color: var(--gray-800);
     color: #fff;
     padding: 20px;
     width: 200px;
