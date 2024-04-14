@@ -76,20 +76,25 @@ function FuncoesPaginaSignUp({
     console.log(arrayDeEnderecos)
   }
 
-  function certificarCamposCredenciais() {
-    console.log("2312")
-    if(usuario.value == "" || senha.value == "") return false 
-    else return true
-    
+  function certificarCamposCredenciais() 
+  {
+    return usuario.value != "" && senha.value != ""
   }
-  //event : FormEvent<HTMLFormELement>
+  //e : FormEvent<HTMLFormELement>
   function manipularEnvioDoFormulario(e) 
   {
     e.preventDefault()
 
-    if(!certificarCamposCredenciais)return alert("Preencha todos os campos de credenciais!")
+    if(!certificarCamposCredenciais())return alert("Preencha todos os campos de credenciais!")
+    //test
     console.log(usuario.value, senha.value)
+    
     if(arrayDeEnderecos.length == 0 )return alert("Adicione ao menos um endereco!")
+    //test
+    console.log(arrayDeEnderecos)
+    
+    // agora e so conectar com a api, acessando o endpoint de cadastro de cliente passando o array de enderecos
+    // e as credenciais
   }
 
 

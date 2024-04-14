@@ -18,9 +18,7 @@ body, button, textarea, input {
     font-family: "Roboto", sans-serif;
 
 }
-:focus {
-    outline: var(--green-300);
-}
+
 .sr-only {
     width: 0px;
     height: 0px;
