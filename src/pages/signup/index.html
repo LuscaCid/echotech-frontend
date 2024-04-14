@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="../../../styles/globals.css">
     <link rel="stylesheet" href="../../../styles/constants.css">
-    <title>EcoTech - Login</title>
+    <link rel="stylesheet" href="../../../styles/scrollbar.css">
+    <script src="./scripts/index.js" defer type="module"></script>
+    <title>EcoTech - Cadastro</title>
 </head>
 <body>
     <header class="shadow-2xl">
@@ -16,64 +18,106 @@
 
     <div class="app">
             
-            <aside >
+            <aside > <!--propiedade hidden oculta o elemento na pagina-->
+                <div class="secao-enderecos hide">
+                    <h2>Lista de endereços adicionados</h2>
+                    <div id="lista-enderecos">
+                    </div>
+                </div>
                 <h1>W5I</h1>
                 <img class="image" src="../../assets/login-aside.svg" alt="">
             </aside>
-            <form>
+            <form id="form-registro">
               <legend>
                   Cadastro
               </legend>
               <div class="input-wrapper">
-                    <label for="usuario" class="sr-only">Nome de usuário</label>
-                    <input           
-                        type="text" 
-                        name="usuario" 
-                        id="input-usuário"
-                        placeholder="Usuário"
-                    >
-              </div>
-              <div class="input-wrapper">
-                <label for="usuario" class="sr-only">CEP</label>
+                <label for="usuario" class="sr-only">Nome de usuário</label>
                 <input           
                     type="text" 
-                    name="cep" 
-                    id="input-cep"
-                    placeholder="CEP"     
-                >
-            </div>
-              <div class="input-wrapper">
-                <label for="usuario" class="sr-only">Bairro</label>
-                <input           
-                    type="text" 
-                    name="bairro" 
-                    id="input-bairro"
-                    placeholder="Bairro"
+                    name="usuario" 
+                    id="usuario"
+                    placeholder="Usuário"
                 >
             </div>
             <div class="input-wrapper">
-                <label for="usuario" class="sr-only">Nome da rua</label>
-                <input           
-                    type="text" 
-                    name="rua" 
-                    id="input-rua"
-                    placeholder="Nome da rua"
+                <label 
+                    class="sr-only"
+                    for="senha">
+                    Senha
+                </label>
+                <input 
+                    type="password" 
+                    name="senha" 
+                    id="senha" 
+                    placeholder="Senha"
                 >
-            </div>
-              <div class="input-wrapper">
-                    <label 
-                        class="sr-only"
-                        for="input-senha">
-                        Senha
-                    </label>
-                    <input 
-                        type="password" 
-                        name="senha" 
-                        id="input-senha" 
-                        placeholder="Senha"
+        </div>
+            <h2 id="separator">
+                Adicione ao menos um endereço
+                <button type="button" id="adicionar-endereco">
+                    Adicionar<img src="../../assets/add.svg" alt="icone para adicionar novos endereços">
+                </button>
+            </h2>
+
+              <div class="inputs">
+               
+                <div class="input-wrapper">
+                    <label for="cep" class="sr-only">CEP</label>
+                    <input           
+                        type="text" 
+                        name="cep" 
+                        id="cep"
+                        placeholder="CEP"     
                     >
+                </div>
+                <div class="input-wrapper">
+                    <label for="bairro" class="sr-only">Bairro</label>
+                    <input           
+                        type="text" 
+                        name="bairro" 
+                        id="bairro"
+                        placeholder="Bairro"
+                    >
+                </div>
+                <div class="input-wrapper">
+                    <label for="rua" class="sr-only">Nome da rua</label>
+                    <input           
+                        type="text" 
+                        name="rua" 
+                        id="rua"
+                        placeholder="Rua"
+                    >
+                </div>
+                <div class="input-wrapper">
+                    <label for="estado" class="sr-only">Estado Federal</label>
+                    <input           
+                        type="text" 
+                        name="estado" 
+                        id="estado"
+                        placeholder="Estado"
+                    >
+                </div>
+                <div class="input-wrapper">
+                    <label for="numero" class="sr-only">Numero da casa</label>
+                    <input           
+                        type="number" 
+                        name="numero" 
+                        id="numero"
+                        placeholder="Número da casa"
+                    >
+                </div>
+                <div class="input-wrapper">
+                    <label for="cidade" class="sr-only">Cidade</label>
+                    <input           
+                        type="text" 
+                        name="cidade" 
+                        id="cidade"
+                        placeholder="Cidade"     
+                    >
+                </div>
+                
               </div>
-              
               <button id="btn-registrar" type="submit">
                   Registrar
               </button>

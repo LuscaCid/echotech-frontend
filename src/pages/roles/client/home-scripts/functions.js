@@ -13,16 +13,12 @@ export default function FactoryFuncoes (){
     async function buscar_historico(query) {
         const params = new FormData()
         params.append("busca" , query)
-        try {
-            const response = await fetch("http://localhost:3000/historico" )
-            return response;
-        } catch (err) {
-            if(err.mensagem) {
-                window.alert(err.mensagem)
-                return;
-            } 
-            window.alert("Erro ao Buscar.")
-        }
+        
+            const response = await fetch("http://localhost:3000/historico")
+            const jsonResponse = await  response.json();
+            return response
+        
+        
     } 
 
     return {
