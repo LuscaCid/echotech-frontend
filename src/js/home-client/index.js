@@ -1,5 +1,5 @@
-import ElementosFactory  from './home-scripts/elements.js';
-import FuncoesFactory from './home-scripts/functions.js'
+import ElementosFactory  from './elements.js';
+import FuncoesFactory from './functions.js'
 
 
 const ElementosHTML =  ElementosFactory();
