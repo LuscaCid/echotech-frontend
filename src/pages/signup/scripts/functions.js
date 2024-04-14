@@ -54,10 +54,8 @@ function FuncoesPaginaSignUp({
     listaEnderecos.appendChild(elementoHTML);
   
     btnDeleteArr = document.querySelectorAll(".botao-excluir")
-    console.log(btnDeleteArr)
 
     btnDeleteArr.forEach(botao => {
-      console.log(botao)
       botao.addEventListener("click" ,()=> deletarEndereco(botao))
     })
   }
@@ -73,7 +71,6 @@ function FuncoesPaginaSignUp({
     //isso vai esconder o elemento quando o array de enderecos estiver vazio
     if(arrayDeEnderecos.length === 0)secaoEnderecos.classList.add("hide")
     
-    console.log(arrayDeEnderecos)
   }
 
   function certificarCamposCredenciais() 
@@ -91,7 +88,6 @@ function FuncoesPaginaSignUp({
     
     if(arrayDeEnderecos.length == 0 )return alert("Adicione ao menos um endereco!")
     //test
-    console.log(arrayDeEnderecos)
     
     // agora e so conectar com a api, acessando o endpoint de cadastro de cliente passando o array de enderecos
     // e as credenciais

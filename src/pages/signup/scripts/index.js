@@ -17,7 +17,6 @@ const {
   formulario,
   listaEnderecos,
   secaoEnderecos,
-  btnDeleteArr
 
 } = ElementosPaginaSignUp()
 //let arrayDeEnderecos : typeof enderecoDTO[];  
@@ -42,11 +41,7 @@ const {
     secaoEnderecos
   });
 
-const credenciaisDTO = { 
-  usuario : usuario.value, 
-  senha : senha.value 
 
-}
 Array.length
 cep.addEventListener("change", async () => {
   //dados contem a resposta da api da viacep
@@ -63,7 +58,6 @@ cep.addEventListener("change", async () => {
     }
   }
 
-  
 })
 
 botaoAdicionarEndereco.addEventListener("click", () => {
@@ -75,7 +69,6 @@ botaoAdicionarEndereco.addEventListener("click", () => {
     rua : rua.value
   }
   adicionarEndereco(enderecoDTO, arrayDeEnderecos)
-  console.log(enderecoDTO)
 } )
 
 formulario.addEventListener("submit", manipularEnvioDoFormulario)
