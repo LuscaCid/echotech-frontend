@@ -1,3 +1,4 @@
+
 function FuncoesPaginaSignUp({
   bairro, 
   cidade,
@@ -78,21 +79,28 @@ function FuncoesPaginaSignUp({
     return usuario.value != "" && senha.value != ""
   }
   //e : FormEvent<HTMLFormELement>
-  function manipularEnvioDoFormulario(e) 
+  async function manipularEnvioDoFormulario(e) 
   {
     e.preventDefault()
 
     if(!certificarCamposCredenciais())return alert("Preencha todos os campos de credenciais!")
     //test
-    console.log(usuario.value, senha.value)
     
     if(arrayDeEnderecos.length == 0 )return alert("Adicione ao menos um endereco!")
     //test
+    const formData = new FormData()
+    formData.append("usuario" , usuario.value)
+    formData.append("senha" , usuario.value)
+    formData.append("arrayDeEnderecos" , arrayDeEnderecos)
+
+    console.log(usuario.value, senha.value)
+    console.log(formData)
+    //const resposta = await api.post("clients/registrar", formData);
+    //return resposta.data ;
     
     // agora e so conectar com a api, acessando o endpoint de cadastro de cliente passando o array de enderecos
     // e as credenciais
   }
-
 
   function popularCamposEndereco(dadosViaCep) 
   {

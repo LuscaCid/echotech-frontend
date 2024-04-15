@@ -19,6 +19,7 @@ header {
   top: 0;
   color: white;
   background-color: var(--gray-800);
+  border-bottom: 1px solid var(--gray-700);
 }
 header a {
   text-decoration: none;

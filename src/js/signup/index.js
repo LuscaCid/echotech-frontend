@@ -41,8 +41,6 @@ const {
     secaoEnderecos
   });
 
-
-Array.length
 cep.addEventListener("change", async () => {
   //dados contem a resposta da api da viacep
   if(cep.value.length > 6) {
