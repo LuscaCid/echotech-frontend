@@ -10,20 +10,31 @@ header {
     color: #fff;
     padding: 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center; /* Ajusta os botões para o lado direito */
 }
 
-.logout-btn,
-.voltar-btn {
+header a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--gray-100);
+}
+
+header button {
     background: none;
     color: #fff;
     cursor: pointer;
-    margin-right: 10px;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    border: 1px solid var(--gray-700);
+    font-size: 14px; /* Mantém o tamanho da fonte */
+    padding: 8px 16px; /* Aumenta o padding para aumentar a borda */
+    margin-right: 10px; /* Espaço entre os botões */
+    border-radius: 8px; /* Deixa a borda mais arredondada */
+    border: 2px solid var(--gray-700); /* Aumenta a largura da borda */
     transition: background 0.2s;
+}
+
+header button:hover {
+    background-color: var(--green-600);
 }
 
 main {
@@ -60,6 +71,7 @@ textarea {
     box-sizing: border-box;
 }
 
+
 .upload-container {
     position: relative;
 }
@@ -79,7 +91,7 @@ button[type="submit"] {
     color: white;
     padding: 15px 30px; /* Aumenta o padding */
     border: none;
-    border-radius: 20px; /* Torna o botão mais arredondado */
+    border-radius: 4px; /* Deixa o botão com bordas quadradas */
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -92,3 +104,20 @@ h2 {
     color: #fff;
     text-align: center;
 }
+    /* Estilizando o botão de seleção de arquivo */
+    .custom-file-input {
+        color: transparent; /* Oculta o texto original */
+        cursor: pointer;
+    }
+ .custom-file-input::before {
+    content: 'Escolher Imagem'; /* Alterado o texto para 'Escolher Imagem' */
+    display: inline-block;
+    background-color: var(--gray-800);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid var(--gray-700);
+    cursor: pointer;
+}
+
+

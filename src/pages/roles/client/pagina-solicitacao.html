@@ -14,6 +14,7 @@
             margin: 0;
             padding: 0;
             background-color: var(--gray-900);
+            overflow: hidden; /* Remover a barra de rolagem */
         }
 
         header {
@@ -55,6 +56,7 @@
 
         main {
             padding: 20px;
+            overflow: auto; /* Adicione overflow: auto para permitir a rolagem dentro do main */
         }
 
         .input-container {
@@ -155,32 +157,57 @@
                         </select>
                     </div>
                     <div class="input-col">
+                        <label for="endereco_cliente">Endereço do Cliente:</label>
+                        <select id="endereco_cliente" name="endereco_cliente"></select>
+                    </div>
+                    <div class="input-col">
                         <label for="numero">Quantidade:</label>
                         <input type="text" id="numero" name="numero" required>
                     </div>
                 </div>
-
-                <div class="input-row">
-                    <div class="input-col">
-                        <label for="quantidade">CEP:</label>
-                        <input type="text" id="quantidade" name="quantidade" required>
-                    </div>
-                    <div class="input-col">
-                        <label for="rua">Rua:</label>
-                        <input type="text" id="rua" name="rua" required>
-                    </div>
-                </div>
-
-                <div class="input-row">
-                    <div class="input-col">
-                        <label for="cep">Número da casa:</label>
-                        <input type="text" id="cep" name="cep" required>
-                    </div>
-                    <div class="input-col">
-                        <label for="estado">Bairro:</label>
-                        <input type="text" id="estado" name="estado" required>
-                    </div>
-                </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const tipoResiduoSelect = document.getElementById('tipo_residuo');
+                        const materialSelect = document.getElementById('material');
+                        const quantidadeInput = document.getElementById('numero');
+                        const enderecoClienteSelect = document.getElementById('endereco_cliente');
+                
+                        // Função para carregar os endereços do cliente com base nos critérios selecionados
+                        function carregarEnderecosCliente() {
+                            const tipoResiduo = tipoResiduoSelect.value;
+                            const material = materialSelect.value;
+                            const quantidade = quantidadeInput.value;
+                
+                            // Aqui você faria uma requisição AJAX para o backend
+                            // Passando os critérios selecionados e obteria os endereços dos clientes
+                            // Neste exemplo, vamos preencher opções fictícias para ilustração
+                            const enderecosClientes = [
+                                "Endereço 1",
+                                "Endereço 2",
+                                "Endereço 3"
+                            ];
+                
+                            // Limpar as opções atuais
+                            enderecoClienteSelect.innerHTML = '';
+                
+                            // Adicionar as opções dos endereços dos clientes ao select
+                            enderecosClientes.forEach(endereco => {
+                                const option = document.createElement('option');
+                                option.value = endereco;
+                                option.textContent = endereco;
+                                enderecoClienteSelect.appendChild(option);
+                            });
+                        }
+                
+                        // Event listener para chamar a função quando os critérios forem alterados
+                        tipoResiduoSelect.addEventListener('change', carregarEnderecosCliente);
+                        materialSelect.addEventListener('change', carregarEnderecosCliente);
+                        quantidadeInput.addEventListener('input', carregarEnderecosCliente);
+                
+                        // Chamar a função inicialmente para preencher os endereços
+                        carregarEnderecosCliente();
+                    });
+                </script>
                 
                 <button type="submit">Enviar Solicitação</button>
             </form>
