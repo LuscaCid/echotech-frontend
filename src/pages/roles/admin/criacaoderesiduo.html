@@ -6,29 +6,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criação de Resíduos</title>
+    <style>
+        /* Estilo para adicionar margem entre o botão e os campos */
+        .input-row {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <a href="./index.html">EcoTech</a>
         <div>
-            <button>Logout</button>
-            <button>Voltar</button>
+            <button onclick="logout()">Logout</button>
+            <button onclick="goBack()">Voltar</button>
         </div>
     </header>
     
     <main>
         <h2 class="page-title">Criação de Resíduos</h2>
         <div class="input-container">
-            <form action="processamento.php" method="post">
+            <form id="residuoForm" action="#" method="post"> <!-- Action modificada para "#" -->
                 <div class="input-row">
-                    <label for="numero">Adicione um novo tipo de Resíduo:</label>
+                    <label for="tipo_residuo">Adicione um novo tipo de Resíduo:</label>
                     <div class="input-field">
-                        <input type="text" id="numero" name="numero" required>
-                        <button type="submit">Enviar Solicitação</button>
+                        <input type="text" id="tipo_residuo" name="tipo_residuo" required>
+                    </div>
+                 </div>
+                <div class="input-row">
+                    <label for="tipo_medida">Tipo de Medida:</label>
+                    <div class="input-field">
+                        <select id="tipo_medida" name="tipo_medida" required style="font-size: 16px;">
+                            <option value="quilo">Kg</option>
+                            <option value="liquido">Líquido</option>
+                        </select>
                     </div>
                 </div>
+                
+                <div class="input-row">
+                    <label for="valor_medida">Valor por Litro/Quilo:</label>
+                    <input type="number" id="valor_medida" name="valor_medida" required>
+                </div>
+                <button type="submit" style="margin-top: 10px;">Enviar Solicitação</button> <!-- Estilo adicionado para a margem superior -->
             </form>
         </div>
+        <div id="displayValor"></div> <!-- Elemento para mostrar o valor calculado -->
     </main>
+
+<script>
+        function logout() {
+            // Lógica para logout aqui
+            alert("Logout realizado com sucesso!");
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById('residuoForm');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Impede o envio do formulário padrão
+
+                // Obtém os valores dos novos campos
+                const tipoMedida = document.getElementById('tipo_medida').value;
+                const valorMedida = parseFloat(document.getElementById('valor_medida').value);
+
+                // Obtém o valor do novo tipo de resíduo
+                const tipoResiduo = document.getElementById('tipo_residuo').value;
+
+                // Calcula o valor total com base no valor por litro/quilo
+                const valorTotal = calcularValorTotal(valorMedida);
+
+                // Constrói o objeto de dados da solicitação
+                const data = {
+                    tipo_residuo: tipoResiduo,
+                    tipo_medida: tipoMedida,
+                    valor_medida: valorMedida,
+                    valor_total: valorTotal
+                };
+
+                // Envia os dados para o endpoint da API
+                fetch('URL_DO_ENDPOINT_DA_API', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Adicione quaisquer headers necessários aqui, como tokens de autenticação
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao enviar solicitação');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Lida com a resposta da API, se necessário
+                    console.log('Resposta da API:', data);
+                    // Exibe o valor calculado
+                    exibirValor(valorTotal);
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar solicitação:', error);
+                    // Aqui você pode exibir uma mensagem de erro para o usuário
+                });
+            });
+
+            function calcularValorTotal(valorMedida) {
+                // Lógica de cálculo do valor total (exemplo simples: apenas multiplica por 2)
+                return valorMedida * 2;
+            }
+
+            function exibirValor(valorTotal) {
+                const displayValor = document.getElementById('displayValor');
+                displayValor.textContent = `Valor total: ${valorTotal.toFixed(2)}`;
+            }
+        });
+    </script> 
 </body>
 </html>
