@@ -22,11 +22,14 @@ let contextoProdutos = [] // este contexto contera os produtos a serem renderiza
  * },]
  * 
  */
+let dadosEmJson = localStorage.getItem("@ecotech-carrinho") || null;
+let produtosCarrinho = JSON.parse(dadosEmJson);
 
 const {
   getProdutos,
   renderizarSecaoProdutos,
-  manipularEnvioFormularioBusca
+  manipularEnvioFormularioBusca,
+  renderizarCarrinhoLocalstorage
   } = FabricaDeFuncoes({
   inputPesquisar,
   renderizarProdutos, 
@@ -35,15 +38,18 @@ const {
 })
 
 document.addEventListener("DOMContentLoaded", async () => {
-  try {
+  
     contextoProdutos = await getProdutos();
    
     renderizarSecaoProdutos(contextoProdutos)
-   
-    console.log(contextoProdutos)
-  } catch (error) {
-    window.alert(error);
-  }
+    const dataStorage = localStorage.getItem("@ecotech-carrinho")
+    const parsed = JSON.parse(dataStorage)
+    if(dataStorage) 
+    {
+      renderizarCarrinhoLocalstorage(parsed)
+    }
+  
+  
   //contem um array retornado do backend com os produtos cadastrados pelos funcionarios
 })
 

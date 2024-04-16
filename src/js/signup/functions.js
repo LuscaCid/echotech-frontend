@@ -100,6 +100,7 @@ function FuncoesPaginaSignUp({
     
     // agora e so conectar com a api, acessando o endpoint de cadastro de cliente passando o array de enderecos
     // e as credenciais
+    
   }
 
   function popularCamposEndereco(dadosViaCep) 
