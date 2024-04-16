@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--gray-900);
+    overflow-x: hidden; /* Remove a barra de rolagem horizontal */
+}
+
+header {
+    background-color: var(--gray-800);
+    color: #000000;
+    padding: 25px 24px 54px;
+    display: flex;
+    justify-content: space-between; /* Ajusta os botões para o lado direito */
+}
+
+header div button {
+    margin-left: 10px; /* Adiciona um espaço entre os botões */
+    align-items: center;
+    border-bottom: 1px solid var(--gray-700);
+    justify-content: flex-start; /* Ajusta os botões para o lado esquerdo */
+}
+
+header a {
+    text-decoration: none;
+    color: var(--gray-100);
+    font-weight: 700;
+    font-size: 23px;
+}
+
+header button {
+    margin-right: 10px; /* Adiciona um espaço entre os botões */
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid var(--gray-700);
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+header button:hover {
+    background-color: var(--green-600);
+}
+
+
+header button:hover {
+    background-color: var(--green-600);
+}
+
+main {
+    padding: 20px;
+}
+
+.input-container {
+    background-color: var(--gray-800); /* Cor de fundo da caixa */
+    padding: 30px; /* Aumenta o preenchimento para aumentar o tamanho da caixa */
+    border-radius: 8px; /* Borda arredondada */
+    width: fit-content; /* Define a largura da caixa para se ajustar ao conteúdo */
+    margin: 0 auto 20px; /* Centraliza a caixa horizontalmente e adiciona margem na parte inferior */
+}
+
+form {
+    margin: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #fff; /* Cor do texto da etiqueta */
+    font-weight: bold; /* Adiciona negrito */
+}
+
+input[type="text"],
+select {
+    width: calc(100% - 22px); /* Largura dos campos de entrada e selects considerando o padding */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #030303;
+    border-radius: 4px;
+    color: #333; /* Cor do texto dos campos de entrada e selects */
+    box-sizing: border-box; /* Garante que a largura inclua o preenchimento e a borda */
+}
+
+button {
+    background-color: #4CAF50;
+    color: rgb(255, 252, 252);
+    padding: 15px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+h2 {
+    color: #fff;
+    text-align: center;
+}
+
