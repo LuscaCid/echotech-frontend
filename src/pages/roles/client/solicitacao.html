@@ -126,55 +126,6 @@
         }
     </style>
 </head>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.querySelector('form');
-
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio do formulário padrão
-
-            // Obtém os valores dos campos do formulário
-            const tipoResiduo = document.getElementById('tipo_residuo').value;
-            const material = document.getElementById('material').value;
-            const enderecoCliente = document.getElementById('endereco_cliente').value;
-            const quantidade = document.getElementById('numero').value;
-
-            // Constrói o objeto de dados da solicitação
-            const data = {
-                tipo_residuo: tipoResiduo,
-                material: material,
-                endereco_cliente: enderecoCliente,
-                quantidade: quantidade
-            };
-
-            // Envia os dados para o endpoint da API
-            fetch('URL_DO_ENDPOINT_DA_API', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // Adicione quaisquer headers necessários aqui, como tokens de autenticação
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao enviar solicitação');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Lida com a resposta da API, se necessário
-                console.log('Resposta da API:', data);
-                // Aqui você pode exibir uma mensagem de sucesso para o usuário ou redirecioná-lo para outra página
-            })
-            .catch(error => {
-                console.error('Erro ao enviar solicitação:', error);
-                // Aqui você pode exibir uma mensagem de erro para o usuário
-            });
-        });
-    });
-</script>
-
 <body>
     <header>
         <a href="./index.html">EcoTech</a>
@@ -192,27 +143,15 @@
                     <div class="input-col">
                         <label for="tipo_residuo">Resíduo:</label>
                         <select id="tipo_residuo" name="tipo_residuo">
-<<<<<<< HEAD
-                            <option value="residuo1">Resíduo 1</option>
-                            <option value="residuo2">Resíduo 2</option>
-                            <option value="residuo3">Resíduo 3</option>
-=======
 
                            <option >Selecione</option>
 
->>>>>>> 317a5cfdecf7ad19c275991fd4496ec0b7a1d701
                         </select>
                     </div>
                     <div class="input-col">
                         <label for="material">Material:</label>
                         <select id="material" name="material">
-<<<<<<< HEAD
-                            <option value="material1">Material 1</option>
-                            <option value="material2">Material 2</option>
-                            <option value="material3">Material 3</option>
-=======
 
->>>>>>> 317a5cfdecf7ad19c275991fd4496ec0b7a1d701
                         </select>
                     </div>
                     <div class="input-col">
@@ -235,10 +174,7 @@
                 
                         // Função para carregar os endereços do cliente com base nos critérios selecionados
                         async function  carregarEnderecosCliente() {
-                            const tipoResiduo = tipoResiduoSelect.value;
-                            const material = materialSelect.value;
-                            const quantidade = quantidadeInput.value;
-   
+
                             const dados = JSON.parse(localStorage.getItem('@ecotech-dados'));                            
                             const {chave} = dados
 
@@ -260,24 +196,22 @@
                                 const option = document.createElement('option');
                                 option.value = endereco.id_endereco;
 
-                                option.textContent = endereco.nm_complemento
-;
+                                option.textContent = endereco.nm_complemento;
+
                                 enderecoClienteSelect.appendChild(option);
                             });
                         }
                         carregarEnderecosCliente();
                     });
-                </script>
-                
+                </script>          
                 <button type="submit">Enviar Solicitação</button>
             </form>
         </div>
     </main>
-<<<<<<< HEAD
-=======
 
     <script>
         document.addEventListener("DOMContentLoaded",async function() {
+            
             const tipoResiduoSelect = document.getElementById('tipo_residuo');
             const materialSelect = document.getElementById('material');
             const quantidadeInput = document.getElementById('numero');
@@ -351,19 +285,40 @@
                 e.preventDefault()
                 const formData = new FormData()
                 
-                formData.append("endereco", enderecoClienteSelect.value)
-                formData.append("material", materialSelect.value)
-                formData.append("residuo", tipoResiduoSelect.value) 
-                formData.append("quantidade", quantidadeInput.value)
+                formData.append("id_endereco", enderecoClienteSelect.value)
+                formData.append("id_material", materialSelect.value)
+                formData.append("qt_material", quantidadeInput.value)
+                
+                const localstorage = localStorage.getItem("@ecotech-dados")
+                const tokenParsed = JSON.parse(localstorage)
+                const { chave } = tokenParsed
+                try{
+                    const resposta = await fetch ("http://192.168.0.135:8000/api/solicitacoes/adicionar", {
+                        method : "POST",
+                        body : formData,
+                        headers : {
+                            
+                            Authorization : "Bearer " + chave
+                        }
+                    })
+                    const respostaFormatada = await resposta.json()
+                    
+                    if(respostaFormatada.inserido) {
+                        return window(respostaFormatada.inserido)
+                        
+                    } else if (respostaFormatada.falha) {
+                        return window(respostaFormatada.falha)
+                        
+                    }
+                } catch (exception ) {
+                    alert(exception)
+                }
 
-                const resposta = await fetch ("http://localhost:8000/solicitacoes/criar", formData)
-                const respostaFormatada = await resposta.json()
             })
             // Chamar a função inicialmente para preencher os endereços
 
         });
     </script>
 
->>>>>>> 317a5cfdecf7ad19c275991fd4496ec0b7a1d701
 </body>
 </html>

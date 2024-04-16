@@ -6,13 +6,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Produto</title>
+    <style>
+        /* Estilizando o botão de seleção de arquivo */
+        .custom-file-input {
+            color: transparent; /* Oculta o texto original */
+            cursor: pointer;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .custom-file-input::before {
+            content: 'Escolher Imagem'; /* Adiciona o novo texto antes do botão */
+            display: inline-block;
+            background-color: var(--gray-800);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: 1px solid var(--gray-700);
+            cursor: pointer;
+        }
+        .image-preview {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .image-preview img {
+            max-width: 200px;
+            margin-top: 10px;
+        }
+        /* Estilizando o botão "Voltar" */
+        .voltar-btn {
+            background: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 16px;
+            margin-right: 10px;
+            border-radius: 8px;
+            border: 2px solid var(--gray-700);
+            transition: background 0.2s;
+            text-decoration: none; /* Remove a sublinhado do link */
+        }
+        .voltar-btn:hover {
+            background-color: var(--green-600);
+        }
+        /* Estilizando o botão "Logout" */
+        .logout-btn {
+            background: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 2px solid var(--gray-700);
+            transition: background 0.2s;
+            text-decoration: none; /* Remove a sublinhado do link */
+        }
+        .logout-btn:hover {
+            background-color: var(--green-600);
+        }
+    </style>
 </head>
 <body>
     <header>
         <a href="../paginahomefuncionario/index.html">EcoTech</a>
         <div>
-            <button>Logout</button>
-            <button>Voltar</button>
+            <button class="logout-btn"><a href="http://seu-link-de-logout.com">Logout</a></button>
+            <button class="voltar-btn"><a href="http://127.0.0.1:5500/src/pages/roles/admin/paginahomefuncionario/index.html">Voltar</a></button>
         </div>
     </header>
     
