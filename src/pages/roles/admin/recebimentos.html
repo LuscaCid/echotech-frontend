@@ -12,18 +12,22 @@
 </head>
 <body class="bg-zinc-900">
     <!--modal da pagina para ver detalhes do recebimento clicado-->
-    <div id=" " class=" hidden absolute inset-0 place-items-center bg-zinc-950/50 h-screen w-full ">
-        <div class="absolute  w-[400px] p-4 bg-zinc-800 rounded-md">
-            <legend class="text-zinc-200 text-3xl font-bold">Detalhes da solicitação</legend>
+    <div id="modal" class="  absolute inset-0 place-items-center flex items-center justify-center bg-zinc-950/80 h-screen w-full ">
+        <div class="relative border z-20 border-zinc-700 w-[400px] py-8 px-6 bg-zinc-800 rounded-md">
+            <button id="fechar-modal" class="font-bold absolute top-2 right-2 bg-zinc-600 rounded-md text-red-500 p-2 hover:bg-zinc-700 transition duration-100" >X</button>
+            <legend class="mb-4 text-zinc-200 text-3xl font-bold">Detalhes da solicitação</legend>
             <form class="p-4 border rounded-md border-zinc-700" id="formulario-alteracao">
-                <fieldset class="flex flex-col gap-2 w-full">
-                    <input class="rounded-md bg-zinc-900 text-zinc-200 p-2 text-2xl" value="valor" type="text" readonly>
-                    <input class="rounded-md bg-zinc-900 text-zinc-200 p-2 text-2xl" value="valor" type="text" readonly>
-                    <input class="rounded-md bg-zinc-900 text-zinc-200 p-2 text-2xl" value="valor" type="text" readonly>
-                    <input class="rounded-md bg-zinc-900 text-zinc-200 p-2 text-2xl" value="valor" type="text" readonly>
+                <fieldset class="flex flex-col gap-3 w-full mb-4">
+                    <input id="nm_usuario" class=" rounded-md bg-zinc-900 text-zinc-200 py-3 px-4 border border-zinc-700 text-2xl focus:outline-none" value="valor" type="text" readonly>
+                    <input id="" class="rounded-md bg-zinc-900 text-zinc-200 py-3 px-4 border border-zinc-700 text-2xl focus:outline-none" value="valor" type="text" readonly>
+                    <input id="" class="rounded-md bg-zinc-900 text-zinc-200 py-3 px-4 border border-zinc-700 text-2xl focus:outline-none" value="valor" type="text" readonly>
+                    <input id="" class="rounded-md bg-zinc-900 text-zinc-200 py-3 px-4 border border-zinc-700 text-2xl focus:outline-none" value="valor" type="text" readonly>
                 </fieldset>
-                <button class="p-4 rounded-md border border-zinc-700 text-2xl font-bold bg-green-600">Aceitar</button>
-                <button class="p-4 rounded-md border border-zinc-700 text-2xl font-bold bg-green-600">Negar</button>
+                <div class="flex flex-row justify-between ">
+                    <button class="p-4 rounded-md border border-zinc-700 text-2xl font-bold text-zinc-200 bg-green-600 hover:bg-green-700 transtion duration-200">Aceitar</button>
+                    <button class="p-4 rounded-md border border-zinc-700 text-2xl font-bold text-zinc-200 bg-red-500 hover:bg-red-600 transtion duration-200">Negar</button>
+                </div>
+                    
             </form>
         </div>
     </div>

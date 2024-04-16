@@ -6,38 +6,42 @@ const ElementosHTML =  ElementosFactory();
 
 //desestruturacao de elementos
 const { 
+    saudacaoUsuario,
     inputPesquisa, 
     botaoPesquisa, 
     secaoRenderizacao 
 }  = ElementosHTML;
 
 const {
-    buscar_historico,
+    renderizarListaSolicitacoes,
     filtrarDadosPeloInput,
-    renderizarListaSolicitacoes
-} = FuncoesFactory({secaoRenderizacao});
+    buscarHistorico,
+    atualizarSaudacao,
+} = FuncoesFactory({
+    saudacaoUsuario,
+    secaoRenderizacao
+});
 
-//desestruturacao de elementos
-let dadosMockados;
+
 /**
- *  const vetorHistorico = await buscar_historico();
-    console.log(vetorHistorico);
-
-
+ *  
     inputPesquisa.addEventListener("change", ()=> {
         filtrarDadosPeloInput(inputPesquisa.value, vetorHistorico);
     })
 
     botaoPesquisa.addEventListener("click", buscar_historico);
+* 
+*/
 
- * 
- */
+document.addEventListener("DOMContentLoaded", async () =>  {
+    
+    const dados = JSON.parse(localStorage.getItem("@ecotech-dados"))
+    const { nm_usuario } = dados;
+    atualizarSaudacao(nm_usuario);
 
-document.addEventListener("DOMContentLoaded", () =>  {
-    dadosMockados = dadosFalsosParaTeste;
-    console.log(dadosMockados)
+    let dadosBuscados = await buscarHistorico();
     //funcao de teste
     //aqui acontecera o fetch no backend
-    renderizarListaSolicitacoes(dadosMockados)
+    renderizarListaSolicitacoes(dadosBuscados);
 })
 

@@ -174,10 +174,7 @@
                 
                         // Função para carregar os endereços do cliente com base nos critérios selecionados
                         async function  carregarEnderecosCliente() {
-                            const tipoResiduo = tipoResiduoSelect.value;
-                            const material = materialSelect.value;
-                            const quantidade = quantidadeInput.value;
-   
+
                             const dados = JSON.parse(localStorage.getItem('@ecotech-dados'));                            
                             const {chave} = dados
 
@@ -199,15 +196,14 @@
                                 const option = document.createElement('option');
                                 option.value = endereco.id_endereco;
 
-                                option.textContent = endereco.nm_complemento
-;
+                                option.textContent = endereco.nm_complemento;
+
                                 enderecoClienteSelect.appendChild(option);
                             });
                         }
                         carregarEnderecosCliente();
                     });
-                </script>
-                
+                </script>          
                 <button type="submit">Enviar Solicitação</button>
             </form>
         </div>
@@ -215,6 +211,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded",async function() {
+            
             const tipoResiduoSelect = document.getElementById('tipo_residuo');
             const materialSelect = document.getElementById('material');
             const quantidadeInput = document.getElementById('numero');
@@ -288,13 +285,35 @@
                 e.preventDefault()
                 const formData = new FormData()
                 
-                formData.append("endereco", enderecoClienteSelect.value)
-                formData.append("material", materialSelect.value)
-                formData.append("residuo", tipoResiduoSelect.value) 
-                formData.append("quantidade", quantidadeInput.value)
+                formData.append("id_endereco", enderecoClienteSelect.value)
+                formData.append("id_material", materialSelect.value)
+                formData.append("qt_material", quantidadeInput.value)
+                
+                const localstorage = localStorage.getItem("@ecotech-dados")
+                const tokenParsed = JSON.parse(localstorage)
+                const { chave } = tokenParsed
+                try{
+                    const resposta = await fetch ("http://192.168.0.135:8000/api/solicitacoes/adicionar", {
+                        method : "POST",
+                        body : formData,
+                        headers : {
+                            
+                            Authorization : "Bearer " + chave
+                        }
+                    })
+                    const respostaFormatada = await resposta.json()
+                    
+                    if(respostaFormatada.inserido) {
+                        return window(respostaFormatada.inserido)
+                        
+                    } else if (respostaFormatada.falha) {
+                        return window(respostaFormatada.falha)
+                        
+                    }
+                } catch (exception ) {
+                    alert(exception)
+                }
 
-                const resposta = await fetch ("http://localhost:8000/solicitacoes/criar", formData)
-                const respostaFormatada = await resposta.json()
             })
             // Chamar a função inicialmente para preencher os endereços
 
