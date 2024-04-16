@@ -16,9 +16,9 @@ export default function FactoryFuncoes ({
         const params = new FormData()
         params.append("busca" , query)
         
-        //const response = await fetch("http://localhost:3000/historico")
+        //const response = await fetch("http://localhost:8000/solicitacoes/historico")
         //const jsonResponse = await  response.json();
-        //return response
+        //return jsonResponse
     
         
     } 

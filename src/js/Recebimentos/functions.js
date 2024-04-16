@@ -3,8 +3,14 @@ export function FabricaFuncoesRecebimentos({
     secaoRenderizacaoRecebidos
 }) {
     
-    const getRecebidos = async (query = "") => {
+    const getRecebimentosInitial = async () => {
         //const response = await fetch();
+        //const data =await response.json();
+        //return data
+    }
+
+    const getRecebidos = async (query = "") => {
+        //const response = await fetch("http://localhost:8000/recebimentos/lista");
         //const data =await response.json();
 
     }

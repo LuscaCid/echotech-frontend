@@ -17,8 +17,7 @@ function FabricaDeFuncoes ({
   }
 
   function renderizarSecaoProdutos(vetorDeProdutos) {
-    
-    let divsParaRenderizar = []
+  
     //metodo foreach para renderizar os dados no frontend
     for(const produto of vetorDeProdutos) {
       const elementoHTML = document.createElement("div");
