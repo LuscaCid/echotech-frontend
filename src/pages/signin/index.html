@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="../../../styles/globals.css">
     <link rel="stylesheet" href="../../../styles/constants.css">
+    <script src="../../js/Signin/index.js" defer type="module"></script>
     <title>EcoTech - Login</title>
 </head>
 <body>
@@ -15,17 +16,17 @@
     </header>
 
     <div class="app">
-            <form>
+            <form id="login">
                 <legend>
                     Login
                 </legend>
                 <div class="input-wrapper">
-                    <label for="usuario" class="sr-only">Nome de usuário</label>
+                    <label for="email" class="sr-only">E-mail do Usuário</label>
                     <input           
                         type="text" 
-                        name="usuario" 
-                        id="usuario"
-                        placeholder="Usuário"
+                        name="email" 
+                        id="email"
+                        placeholder="E-mail"
                     >
                 </div>
                 <div class="input-wrapper">

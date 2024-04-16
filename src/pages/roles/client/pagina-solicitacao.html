@@ -143,17 +143,13 @@
                     <div class="input-col">
                         <label for="tipo_residuo">Tipo de Resíduo:</label>
                         <select id="tipo_residuo" name="tipo_residuo">
-                            <option value="PET">PET</option>
-                            <option value="garrafa">garrafa de vidro</option>
-                            <option value="latinha">metal</option>
+                           <option >Selecione</option>
                         </select>
                     </div>
                     <div class="input-col">
                         <label for="material">Material:</label>
                         <select id="material" name="material">
-                            <option value="plastico">plastico</option>
-                            <option value="vidro">vidro</option>
-                            <option value="metal">metal</option>
+                            
                         </select>
                     </div>
                     <div class="input-col">
@@ -172,43 +168,76 @@
         </div>
     </main>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded",async function() {
             const tipoResiduoSelect = document.getElementById('tipo_residuo');
             const materialSelect = document.getElementById('material');
             const quantidadeInput = document.getElementById('numero');
             const enderecoClienteSelect = document.getElementById('endereco_cliente');
             const formulario = document.getElementById("formulario")
             // Função para carregar os endereços do cliente com base nos critérios selecionados
-            function carregarEnderecosCliente() {
-                const tipoResiduo = tipoResiduoSelect.value;
-                const material = materialSelect.value;
-                const quantidade = quantidadeInput.value;
-    
-                // Aqui você faria uma requisição AJAX para o backend
-                // Passando os critérios selecionados e obteria os endereços dos clientes
-                // Neste exemplo, vamos preencher opções fictícias para ilustração
-                const enderecosClientes = [
-                    "Endereço 1",
-                    "Endereço 2",
-                    "Endereço 3"
-                ];
-    
-                // Limpar as opções atuais
-                enderecoClienteSelect.innerHTML = '';
-    
-                // Adicionar as opções dos endereços dos clientes ao select
-                enderecosClientes.forEach(endereco => {
-                    const option = document.createElement('option');
-                    option.value = endereco;
-                    option.textContent = endereco;
-                    enderecoClienteSelect.appendChild(option);
-                });
+
+
+
+            const resposta = await fetch("http://192.168.0.135:8000/api/residuos/lista")
+            const respostaFormatada = await resposta.json()
+
+            function renderizarListaSelect (){
+                for(const element of respostaFormatada) {
+                    
+                    const elementoOption = document.createElement("option")
+                    
+                    elementoOption.value = element.id_residuo;
+                    elementoOption.innerText = element.nm_residuo;
+
+                    tipoResiduoSelect.appendChild(elementoOption)
+                }
             }
+ 
+            renderizarListaSelect()
+
+            
+            function renderizarListaSelectMateriais (){
+                
+            }
+
+            async function dispararEventoParaMudarValoresSelectMateriais() {
+                
+                const selectResiduosId = tipoResiduoSelect.value
+                if(selectResiduosId != "Selecione") {
+                    
+                    console.log(selectResiduosId)
+                    const respostaMateriais = await fetch(`http://192.168.0.135:8000/api/materiais/obter?id_residuo=${selectResiduosId}`)
+                    
+                    const respostaMateriaisFormatada = await respostaMateriais.json()
+
+                    console.log(respostaMateriaisFormatada)
+
+                    const options = materialSelect.querySelectorAll("option")
+
+                    for(const option of options) {
+                        console.log(option)
+                        option.remove()
+                    }
+
+                    for(const element of respostaMateriaisFormatada) {
+                        
+                        const elementoOption = document.createElement("option")
+                    
+                        elementoOption.value = element.id_material;
+                        elementoOption.innerText = element.nm_material;
+                        elementoOption.className = "option"
+
+                        materialSelect.appendChild(elementoOption)
+                        console.log(tipoResiduoSelect)
+                    }
+
+                }
+                
+                
+            }           
     
-            // Event listener para chamar a função quando os critérios forem alterados
-            tipoResiduoSelect.addEventListener('change', carregarEnderecosCliente);
-            materialSelect.addEventListener('change', carregarEnderecosCliente);
-            quantidadeInput.addEventListener('input', carregarEnderecosCliente);
+            tipoResiduoSelect.addEventListener("change", dispararEventoParaMudarValoresSelectMateriais)
+            
             formulario.addEventListener("submit", async (e) => {
                 e.preventDefault()
                 const formData = new FormData()
@@ -222,7 +251,7 @@
                 const respostaFormatada = await resposta.json()
             })
             // Chamar a função inicialmente para preencher os endereços
-            carregarEnderecosCliente();
+
         });
     </script>
 </body>
