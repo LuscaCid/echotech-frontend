@@ -143,17 +143,25 @@
                     <div class="input-col">
                         <label for="tipo_residuo">Tipo de Resíduo:</label>
                         <select id="tipo_residuo" name="tipo_residuo">
+<<<<<<< HEAD
                             <option value="residuo1">Resíduo 1</option>
                             <option value="residuo2">Resíduo 2</option>
                             <option value="residuo3">Resíduo 3</option>
+=======
+                           <option >Selecione</option>
+>>>>>>> c4bade352439e7997c7327d2f163007a57a99c8c
                         </select>
                     </div>
                     <div class="input-col">
                         <label for="material">Material:</label>
                         <select id="material" name="material">
+<<<<<<< HEAD
                             <option value="material1">Material 1</option>
                             <option value="material2">Material 2</option>
                             <option value="material3">Material 3</option>
+=======
+                            
+>>>>>>> c4bade352439e7997c7327d2f163007a57a99c8c
                         </select>
                     </div>
                     <div class="input-col">
@@ -213,5 +221,95 @@
             </form>
         </div>
     </main>
+<<<<<<< HEAD
+=======
+    <script>
+        document.addEventListener("DOMContentLoaded",async function() {
+            const tipoResiduoSelect = document.getElementById('tipo_residuo');
+            const materialSelect = document.getElementById('material');
+            const quantidadeInput = document.getElementById('numero');
+            const enderecoClienteSelect = document.getElementById('endereco_cliente');
+            const formulario = document.getElementById("formulario")
+            // Função para carregar os endereços do cliente com base nos critérios selecionados
+
+
+
+            const resposta = await fetch("http://192.168.0.135:8000/api/residuos/lista")
+            const respostaFormatada = await resposta.json()
+
+            function renderizarListaSelect (){
+                for(const element of respostaFormatada) {
+                    
+                    const elementoOption = document.createElement("option")
+                    
+                    elementoOption.value = element.id_residuo;
+                    elementoOption.innerText = element.nm_residuo;
+
+                    tipoResiduoSelect.appendChild(elementoOption)
+                }
+            }
+ 
+            renderizarListaSelect()
+
+            
+            function renderizarListaSelectMateriais (){
+                
+            }
+
+            async function dispararEventoParaMudarValoresSelectMateriais() {
+                
+                const selectResiduosId = tipoResiduoSelect.value
+                if(selectResiduosId != "Selecione") {
+                    
+                    console.log(selectResiduosId)
+                    const respostaMateriais = await fetch(`http://192.168.0.135:8000/api/materiais/obter?id_residuo=${selectResiduosId}`)
+                    
+                    const respostaMateriaisFormatada = await respostaMateriais.json()
+
+                    console.log(respostaMateriaisFormatada)
+
+                    const options = materialSelect.querySelectorAll("option")
+
+                    for(const option of options) {
+                        console.log(option)
+                        option.remove()
+                    }
+
+                    for(const element of respostaMateriaisFormatada) {
+                        
+                        const elementoOption = document.createElement("option")
+                    
+                        elementoOption.value = element.id_material;
+                        elementoOption.innerText = element.nm_material;
+                        elementoOption.className = "option"
+
+                        materialSelect.appendChild(elementoOption)
+                        console.log(tipoResiduoSelect)
+                    }
+
+                }
+                
+                
+            }           
+    
+            tipoResiduoSelect.addEventListener("change", dispararEventoParaMudarValoresSelectMateriais)
+            
+            formulario.addEventListener("submit", async (e) => {
+                e.preventDefault()
+                const formData = new FormData()
+                
+                formData.append("endereco", enderecoClienteSelect.value)
+                formData.append("material", materialSelect.value)
+                formData.append("residuo", tipoResiduoSelect.value) 
+                formData.append("quantidade", quantidadeInput.value)
+
+                const resposta = await fetch ("http://localhost:8000/solicitacoes/criar", formData)
+                const respostaFormatada = await resposta.json()
+            })
+            // Chamar a função inicialmente para preencher os endereços
+
+        });
+    </script>
+>>>>>>> c4bade352439e7997c7327d2f163007a57a99c8c
 </body>
 </html>
