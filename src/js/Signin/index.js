@@ -5,7 +5,7 @@ const {
     inputEmail,
     inputSenha,
     formulario
-} = elementsHtml() ;
+} = elementsHtml();
 
 
 console.log(inputSenha)
