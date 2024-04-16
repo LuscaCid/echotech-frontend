@@ -16,6 +16,8 @@ export function funcoesSingin({
         });
         const respostaFormatada = await resposta.json();
 
+        localStorage.setItem('@ecotech-dados', JSON.stringify(respostaFormatada));
+
         console.log(respostaFormatada)
         if(respostaFormatada.codigo == "falha") {
             return window.alert(respostaFormatada.codigo, "Ao Logar.")
@@ -41,7 +43,7 @@ export function funcoesSingin({
             // admin
             case 2: 
                 break;
-                
+
         }
     }
 
