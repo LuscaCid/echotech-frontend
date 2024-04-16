@@ -620,6 +620,11 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .-mt-20 {
   margin-top: -5rem;
 }
@@ -741,8 +746,28 @@ video {
   width: 100%;
 }
 
+.w-\[\B4 1200px\] {
+  width: ´1200px;
+}
+
+.w-\[1200px\] {
+  width: 1200px;
+}
+
+.w-\[1000px\] {
+  width: 1000px;
+}
+
 .min-w-\[750px\] {
   min-width: 750px;
+}
+
+.min-w-\[\] {
+  min-width: ;
+}
+
+.min-w-\[600px\] {
+  min-width: 600px;
 }
 
 .max-w-96 {
