@@ -8,8 +8,8 @@ export default [
   },
   {
     id_produto : 2,
-    nome : "carro de controle remoto",
-    descricao : "carrinho para correr na floresta",
+    nome : "carro de teleguidado",
+    descricao : "carrinho para usar na guerra",
     preco : 99.90,
     caminho_imagem : "../../../uploads-products/carro.webp"
   },
