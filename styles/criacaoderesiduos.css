@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--gray-900);
-    overflow-x: hidden; /* Remove a barra de rolagem horizontal */
+    overflow-x: hidden; 
 }
 
 header {
@@ -11,14 +11,14 @@ header {
     color: #000000;
     padding: 25px 24px 54px;
     display: flex;
-    justify-content: space-between; /* Ajusta os botões para o lado direito */
+    justify-content: space-between; 
 }
 
 header div button {
-    margin-left: 10px; /* Adiciona um espaço entre os botões */
+    margin-left: 10px; 
     align-items: center;
     border-bottom: 1px solid var(--gray-700);
-    justify-content: flex-start; /* Ajusta os botões para o lado esquerdo */
+    justify-content: flex-start; 
 }
 
 header a {
@@ -29,7 +29,7 @@ header a {
 }
 
 header button {
-    margin-right: 10px; /* Adiciona um espaço entre os botões */
+    margin-right: 10px; 
     background: none;
     border: none;
     color: #fff;
@@ -55,11 +55,11 @@ main {
 }
 
 .input-container {
-    background-color: var(--gray-800); /* Cor de fundo da caixa */
-    padding: 30px; /* Aumenta o preenchimento para aumentar o tamanho da caixa */
-    border-radius: 8px; /* Borda arredondada */
-    width: fit-content; /* Define a largura da caixa para se ajustar ao conteúdo */
-    margin: 0 auto 20px; /* Centraliza a caixa horizontalmente e adiciona margem na parte inferior */
+    background-color: var(--gray-800); 
+    padding: 30px; 
+    border-radius: 8px; 
+    width: fit-content; 
+    margin: 0 auto 20px; 
 }
 
 form {
@@ -69,19 +69,19 @@ form {
 label {
     display: block;
     margin-bottom: 10px;
-    color: #fff; /* Cor do texto da etiqueta */
-    font-weight: bold; /* Adiciona negrito */
+    color: #fff; 
+    font-weight: bold; 
 }
 
 input[type="text"],
 select {
-    width: calc(100% - 22px); /* Largura dos campos de entrada e selects considerando o padding */
+    width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #030303;
     border-radius: 4px;
-    color: #333; /* Cor do texto dos campos de entrada e selects */
-    box-sizing: border-box; /* Garante que a largura inclua o preenchimento e a borda */
+    color: #333;
+    box-sizing: border-box; 
 }
 
 button {

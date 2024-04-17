@@ -6,65 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Produto</title>
-    <style>
-        /* Estilizando o botão de seleção de arquivo */
-        .custom-file-input {
-            color: transparent; /* Oculta o texto original */
-            cursor: pointer;
-        }
-        input[type="file"] {
-            display: none;
-        }
-        .custom-file-input::before {
-            content: 'Escolher Imagem'; /* Adiciona o novo texto antes do botão */
-            display: inline-block;
-            background-color: var(--gray-800);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 4px;
-            border: 1px solid var(--gray-700);
-            cursor: pointer;
-        }
-        .image-preview {
-            margin-top: 10px;
-            text-align: center;
-        }
-        .image-preview img {
-            max-width: 200px;
-            margin-top: 10px;
-        }
-        /* Estilizando o botão "Voltar" */
-        .voltar-btn {
-            background: none;
-            color: #fff;
-            cursor: pointer;
-            font-size: 14px;
-            padding: 8px 16px;
-            margin-right: 10px;
-            border-radius: 8px;
-            border: 2px solid var(--gray-700);
-            transition: background 0.2s;
-            text-decoration: none; /* Remove a sublinhado do link */
-        }
-        .voltar-btn:hover {
-            background-color: var(--green-600);
-        }
-        /* Estilizando o botão "Logout" */
-        .logout-btn {
-            background: none;
-            color: #fff;
-            cursor: pointer;
-            font-size: 14px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            border: 2px solid var(--gray-700);
-            transition: background 0.2s;
-            text-decoration: none; /* Remove a sublinhado do link */
-        }
-        .logout-btn:hover {
-            background-color: var(--green-600);
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -78,50 +19,22 @@
     <main>
         <h2>Cadastro de Produto</h2>
         <div class="input-container">
-            <form action="#" method="POST" enctype="multipart/form-data">
-                <!-- Use a classe custom-file-input para estilizar o botão -->
-                <label for="imagem" class="custom-file-input">Escolher Imagem</label>
-                <input type="file" id="imagem" name="imagem" accept="*/*" onchange="previewImage(event)">
-                <div class="image-preview" id="imagePreview">
-                    <img id="preview" src="#" alt="Pré-visualização da imagem" style="display: none;">
-                    <p id="file-name"></p> <!-- Para exibir o nome do arquivo -->
-                </div>
-                
+            <form action="#" method="POST">
+                <label for="link-imagem">Link da Imagem:</label>
+                <input type="url" id="link-imagem" name="link-imagem" class="full-width" required>
+
                 <label for="descricao">Descrição do produto:</label>
-                <textarea id="descricao" name="descricao" rows="4" cols="50"></textarea>
-                
+                <textarea id="descricao" name="descricao" rows="4" cols="50" class="full-width" required></textarea>
+
                 <label for="preco">Preço:</label>
-                <input type="number" id="preco" name="preco" min="0" step="0.01">
-                
+                <input type="number" id="preco" name="preco" min="0" step="0.01" class="half-width" required>
+
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" min="0" class="half-width" required>
+
                 <button type="submit">Cadastrar Produto</button>
             </form>
-            
         </div>
     </main>
-
-    <script src="./cadastroproduto.js"></script>
-    <script>
-        function previewImage(event) {
-            const preview = document.getElementById('preview');
-            const file = event.target.files[0];
-            const fileName = document.getElementById('file-name'); // Elemento para exibir o nome do arquivo
-
-            const reader = new FileReader();
-
-            reader.onloadend = function() {
-                preview.src = reader.result;
-                preview.style.display = 'block';
-            }
-
-            if (file) {
-                reader.readAsDataURL(file);
-                fileName.textContent = 'Nome do arquivo: ' + file.name; // Exibe o nome do arquivo
-            } else {
-                preview.src = '';
-                preview.style.display = 'none';
-                fileName.textContent = ''; // Limpa o nome do arquivo se nenhum arquivo for selecionado
-            }
-        }
-    </script>
 </body>
 </html>

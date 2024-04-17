@@ -1,16 +1,195 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Produtos</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../../../styles/geracaodeconsulta.css">
+    <link rel="stylesheet" href="../../../../styles/constants.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .icon {
+            color: #3a3936;
+            cursor:rgb(26, 25, 24)r;
+            margin-left: 10px;
+        }
+
+        .edit-icon:hover,
+        .remove-icon:hover {
+            color: #13e42f;
+        }
+
+        .editable {
+            border: none;
+            background: transparent;
+            color: inherit;
+            width: 100%;
+        }
+        
+        .confirm-btn {
+            color: #41a73d;
+            cursor: pointer;
+        }
+        
+        .confirm-btn:hover {
+            color: #51e951;
+        }
+    </style>
 </head>
 <body>
-    <h1>Consulta de Produtos</h1>
-    <div id="consultaProdutos">
-        <!-- Aqui serão exibidos os produtos e seus saldos -->
-    </div>
-    <script src="scripts.js"></script>
+    <header class="center">
+        <h1>Consulta de Produtos</h1>
+    </header>
+    <main>
+        <section class="center mt-2">
+            <input
+              class="text-2xl text-white rounded-md p-4 bg-zinc-700 border-zinc-600 border"
+              placeholder="Pesquisar" 
+              id="input-pesquisa"
+              type="text">
+            <button id="botao-pesquisa" class="bg-none border border-zinc-800 hover:bg-zinc-700 rounded-md p-2 transition duration-200 ">
+              <img src="../../../assets/search.svg" alt="icone de loopa">
+            </button>
+        </section>
+        <div class="container center">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome do Produto</th>
+                        <th>Quantidade</th>
+                        <th>Valor em R$</th>
+                        <th>Valor em $Eco</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="product-details">
+                    <tr>
+                        <td contenteditable="false">Garrafa</td>
+                        <td contenteditable="false">200</td>
+                        <td contenteditable="false">R$ 20</td>
+                        <td contenteditable="false">$Eco 30</td>
+                        <td>
+                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
+                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td contenteditable="false">Caderno</td>
+                        <td contenteditable="false">20</td>
+                        <td contenteditable="false">R$ 30</td>
+                        <td contenteditable="false">$Eco 55</td>
+                        <td>
+                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
+                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
+                        </td>
+                    </tr>
+                    <td contenteditable="false">Chaveiro ecologico</td>
+                        <td contenteditable="false">90</td>
+                        <td contenteditable="false">R$ 20</td>
+                        <td contenteditable="false">$Eco 15</td>
+                        <td>
+                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
+                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
+                        </td>
+                    </tr>
+                    <td contenteditable="false">Mochila</td>
+                        <td contenteditable="false">40</td>
+                        <td contenteditable="false">R$ 80</td>
+                        <td contenteditable="false">$Eco 800</td>
+                        <td>
+                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
+                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td contenteditable="false">Caneta</td>
+                        <td contenteditable="false">100</td>
+                        <td contenteditable="false">R$ 10</td>
+                        <td contenteditable="false">$Eco 15</td>
+                        <td>
+                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
+                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
+                        </td>
+                    </tr>
+                    <td contenteditable="false">Suporte para notebook</td>
+                        <td contenteditable="false">300</td>
+                        <td contenteditable="false">R$ 70</td>
+                        <td contenteditable="false">$Eco 600</td>
+                        <td>
+                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
+                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
+                        </td>
+                    </tr>
+                    <td contenteditable="false">Noteook</td>
+                        <td contenteditable="false">10</td>
+                        <td contenteditable="false">R$ 2.000</td>
+                        <td contenteditable="false">$Eco 5.000</td>
+                        <td>
+                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
+                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    
+    <script>
+        function searchProducts() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("input-pesquisa");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("product-details");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+        document.getElementById("input-pesquisa").addEventListener("keyup", searchProducts);
+    </script>
+
+    <script>
+        function editRow(element) {
+            var row = element.closest("tr");
+            var cells = row.querySelectorAll("td:not(:last-child)");
+
+            cells.forEach(function(cell) {
+                cell.contentEditable = true;
+            });
+        }
+
+        function confirmUpdate(element) {
+            var row = element.closest("tr");
+            var cells = row.querySelectorAll("td:not(:last-child)");
+
+            cells.forEach(function(cell) {
+                cell.contentEditable = false;
+            });
+        }
+
+        function deleteRow(element) {
+            var row = element.closest("tr");
+            
+            row.remove();
+        }
+    </script>
 </body>
 </html>
