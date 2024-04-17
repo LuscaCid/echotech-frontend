@@ -3,17 +3,42 @@ import { FuncoesSolicitacao } from "./functions.js";
 
 const { 
     secaoRenderizacaoSolicitacoes,
+    botaoAdicionarSolicitacao,
     enderecoClienteSelect,
-    tipoResiduoSelect,
+    formularioBackend,
+    quantidadeInput,
     materialSelect,
-    quantidadeInput
+    residuoSelect,
+    displayEcos,
+    totalEcoDiv,
+    formulario : formularioAdicionarSolicitacao
 } = ElementosHTML();
 
+let arrayDeSolicitacoesParaEnviar = []
+
+
 const {
-    renderizarListaSolicitacoesLocalstorage,
-    adicionarSolicitacaoArray,
-    adicionarSolicitacaoHTML,
-    
+    dispararEventoParaMudarValoresSelectMateriais,
+    adicionarAoArrayDeSolicitacoes,
+    getResiduosRenderizarSelect,
+    manipularEnvioFormulario,
+
 } = FuncoesSolicitacao({
-    secaoRenderizacaoSolicitacoes
+    arrayDeSolicitacoesParaEnviar,
+    secaoRenderizacaoSolicitacoes,
+    quantidadeInput,
+    materialSelect,
+    residuoSelect,
+    displayEcos,
+    totalEcoDiv
 })
+
+residuoSelect.addEventListener("change", dispararEventoParaMudarValoresSelectMateriais)
+
+formularioBackend.addEventListener("submit", manipularEnvioFormulario)
+
+formularioAdicionarSolicitacao.addEventListener("submit", adicionarAoArrayDeSolicitacoes)
+
+botaoAdicionarSolicitacao.addEventListener("click", (a) =>  a)
+
+document.addEventListener("DOMContentLoaded",  getResiduosRenderizarSelect)
