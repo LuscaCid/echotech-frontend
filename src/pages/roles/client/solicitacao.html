@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <link rel="stylesheet" href="./styles/paginasolicitacao.css">
+    <link rel="stylesheet" href="../../../../styles/scrollbar.css">
     <link rel="stylesheet" href="../../../../../styles/constants.css">
     <link rel="stylesheet" href="../../../../styles/constants.css">
     <link rel="stylesheet" href="../../../../dist/output.css">
@@ -30,87 +31,85 @@
           </button>
         </div>
       </header>
-    <main class="my-12 min-w-[600px] w-[1200px] m-auto  border border-zinc-600 text-zinc-100 text-2xl rounded-md bg-zinc-700">
-        <h2>Solicitação de Entrega de Resíduos</h2>
-    
-        <form id="formulario" class="">
-            <div class="">
-                <div class="">
-                    <label for="tipo_residuo">Resíduo:</label>
-                    <select id="tipo_residuo" name="tipo_residuo">
-
-                        <option >Selecione</option>
-
-                    </select>
-                </div>
-                <div class="">
-                    <label for="material">Material:</label>
-                    <select id="material" name="material">
-
-                    </select>
-                </div>
-                <div class="">
-                    <label for="endereco_cliente">Endereço:</label>
-                    <select id="endereco_cliente" name="endereco_cliente">
-                        <option >Selecione</option>
-                    </select>
-                </div>
-                <div class="">
-                    <label for="numero">Quantidade:</label>
-                    <input type="text" id="numero" name="numero" required>
-                </div>
+    <main class="grid grid-cols-2  my-12 min-w-[600px] w-[1200px] h-[400px] m-auto  border border-zinc-800 text-zinc-100 text-2xl rounded-md bg-zinc-800 p-10">
+        
+        <form id="formulario" class="relative flex-col flex  border border-zinc-700 ">
+            <h2 class="p-2 text-3xl border-b border-zinc-700 mb-2">Solicitação de Entrega de Resíduos</h2>
+            <div class="p-2 flex flex-col gap-1">
+                <label class="text-zinc-200" for="material">Material:</label>
+                <select class="text-zinc-200 rounded-md p-2 bg-zinc-900 border border-zinc-700 " id="material" name="material">
+                    <option value="default">Selecione</option>
+                </select>
             </div>
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                   
-            
-                    // Função para carregar os endereços do cliente com base nos critérios selecionados
-                    async function  carregarEnderecosCliente() {
-
-                        const dados = JSON.parse(localStorage.getItem('@ecotech-dados'));                            
-                        const {chave} = dados
-
-                        const resposta = await fetch(
-                            "http://192.168.0.135:8000/api/usuario/enderecos", 
-                            {
-                                method : "GET",
-                                headers : {
-                                    Authorization : 'Bearer ' + chave,
-                            },
-                        })
-                        const respostaFormatada = await resposta.json()
-                        console.log(respostaFormatada)
-                        
-                        const { enderecos } = respostaFormatada;
-            
-                        // Adicionar as opções dos endereços dos clientes ao select
-                        enderecos.forEach(endereco => {
-                            const option = document.createElement('option');
-                            option.value = endereco.id_endereco;
-
-                            option.textContent = endereco.nm_complemento;
-
-                            enderecoClienteSelect.appendChild(option);
-                        });
-                    }
-                    carregarEnderecosCliente();
-                });
-            </script>          
-            <button type="submit">Enviar Solicitação</button>
+            <div class="p-2 flex flex-col gap-1">
+                <label class="text-zinc-200" for="endereco_cliente">Endereço:</label>
+                <select class="text-zinc-200 rounded-md p-2 bg-zinc-900 border border-zinc-700 " id="endereco_cliente" name="endereco_cliente">
+                    <option >Selecione</option>
+                </select>
+            </div>
+            <div class="p-2 flex flex-col gap-1">
+                <label class="text-zinc-200" for="numero">Quantidade:</label>
+                <input class="text-zinc-200 rounded-md p-2 bg-zinc-900 border border-zinc-700 " placeholder="Quantidade em kg ou lt" type="text" id="numero" name="numero" required>
+            </div>
+                     
+            <button class="m-2 absolute  right-0 left-0 bottom-0 rounded-md border-zinc-700 p-2 border hover:bg-zinc-700 transition duration-150" type="submit">
+                Adicionar Solicitação 
+            </button>
         </form>
+        <aside  class="border-r border-b border-zinc-700 relative">
+            <h2 class="p-2 border-t text-3xl px-2 border-b border-r-0 border-zinc-700">Lista de Solicitações para coleta de Materiais</h2>
+            <div >
+                <div id="renderizar-solicitacoes" class=" flex flex-col p-3 gap-3 overflow-y-auto max-h-[270px]">
+                  
+                </div>
+                
+                <button class="rounded-md border hover:bg-zinc-700 transition duration-150 border-zinc-700 p-2 absolute bottom-2 right-2 left-2 ">
+                    Enviar dados
+                </button>
+            </div>
+        </aside>
     </main>
 
     <script>
-        document.addEventListener("DOMContentLoaded",async function() {
-            
-            const tipoResiduoSelect = document.getElementById('tipo_residuo');
-            const materialSelect = document.getElementById('material');
-            const quantidadeInput = document.getElementById('numero');
-            const enderecoClienteSelect = document.getElementById('endereco_cliente');
-            const formulario = document.getElementById("formulario")
+        document.addEventListener("DOMContentLoaded", function() {
+           
+    
             // Função para carregar os endereços do cliente com base nos critérios selecionados
+            async function  carregarEnderecosCliente() {
 
+                const dados = JSON.parse(localStorage.getItem('@ecotech-dados'));                            
+                const {chave} = dados
 
+                const resposta = await fetch(
+                    "http://192.168.0.135:8000/api/usuario/enderecos", 
+                    {
+                        method : "GET",
+                        headers : {
+                            Authorization : 'Bearer ' + chave,
+                    },
+                })
+                const respostaFormatada = await resposta.json()
+                console.log(respostaFormatada)
+                
+                const { enderecos } = respostaFormatada;
+    
+                // Adicionar as opções dos endereços dos clientes ao select
+                enderecos.forEach(endereco => {
+                    const option = document.createElement('option');
+                    option.value = endereco.id_endereco;
+
+                    option.textContent = endereco.nm_complemento;
+
+                    enderecoClienteSelect.appendChild(option);
+                });
+            }
+            carregarEnderecosCliente();
+        });
+    </script> 
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+                       
+            // Função para carregar os endereços do cliente com base nos critérios selecionados
 
             const resposta = await fetch("http://192.168.0.135:8000/api/residuos/lista")
             const respostaFormatada = await resposta.json()
