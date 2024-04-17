@@ -11,7 +11,7 @@ header {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Ajusta os botões para o lado direito */
+    align-items: center;
 }
 
 header a {
@@ -25,11 +25,11 @@ header button {
     background: none;
     color: #fff;
     cursor: pointer;
-    font-size: 14px; /* Mantém o tamanho da fonte */
-    padding: 8px 16px; /* Aumenta o padding para aumentar a borda */
-    margin-right: 10px; /* Espaço entre os botões */
-    border-radius: 8px; /* Deixa a borda mais arredondada */
-    border: 2px solid var(--gray-700); /* Aumenta a largura da borda */
+    font-size: 14px; 
+    padding: 8px 16px; 
+    margin-right: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--gray-700); 
     transition: background 0.2s;
 }
 
@@ -45,10 +45,10 @@ main {
     background-color: var(--gray-800);
     padding: 20px;
     border-radius: 8px;
-    width: 100%; /* Alterado para ocupar toda a largura */
-    max-width: 600px; /* Adicionado limite de largura */
+    width: 100%; 
+    max-width: 600px; 
     margin: 0 auto 20px;
-    box-sizing: border-box; /* Considera o padding e a borda na largura total */
+    box-sizing: border-box; 
 }
 
 form {
@@ -74,8 +74,8 @@ input[type="file"] {
     margin-top: 10px;
     cursor: pointer;
     .custom-file-input {
-        padding: 10px; /* Reduzindo o padding */
-        width: auto; /* Removendo a largura fixa */
+        padding: 10px; 
+        width: auto; 
     }
 }
 input[type="file"]{
@@ -94,12 +94,12 @@ textarea {
 }
 
 button[type="submit"] {
-    width: calc(100% - 22px); /* Alterado para ocupar a mesma largura dos campos */
+    width: calc(100% - 22px); 
     background-color: #4CAF50;
     color: white;
-    padding: 10px; /* Reduzido o padding para corresponder aos campos */
+    padding: 10px; 
     border: none;
-    border-radius: 4px; /* Deixa o botão com bordas quadradas */
+    border-radius: 4px; 
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -117,3 +117,18 @@ h2 {
     color: #fff;
     text-align: center;
 }
+
+#link-imagem {
+    width: calc(100% - 22px); 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    box-sizing: border-box;
+}
+
+#link-imagem:valid {
+    color: blue; 
+    text-decoration: underline; 
+}
+
