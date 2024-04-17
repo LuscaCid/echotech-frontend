@@ -1,0 +1,94 @@
+body {
+    background-color: var(--gray-900);
+    color: white; 
+}
+
+h1 {
+    font-family: Arial, sans-serif; 
+}
+
+#product-details {
+    text-align: center;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 50%;
+    margin: auto;
+    border-collapse: collapse;
+    border: 1px solid #4B5563;
+    margin-top: 20px;
+    color: white;
+}
+
+th,
+td {
+    border: 1px solid var(--gray-800);
+    padding: 8px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+th {
+    background-color: var(--gray-800);
+    font-family: Arial, sans-serif;
+}
+
+#input-pesquisa {
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-size: 18px;
+    width: calc(30% - 30px); 
+    max-width: calc(30% - 30px); 
+    background-color: var(--gray-800);
+    border: none;
+    outline: none;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+#botao-pesquisa {
+    padding: 10px 15px;
+    background-color: var(--gray-800);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    max-width: 80px; 
+    width: calc(30% - 25px);
+    max-width: 120px;
+    display: flex;
+}
+
+#botao-pesquisa:hover {
+    background-color: var(--gray-800);
+}
+
+#botao-pesquisa img {
+    width: 20px;
+    height: 20px;
+}
+
+#botao-pesquisa img:hover {
+    filter: brightness(0.8); 
+    
+}
+
+h1 {
+    color: white; 
+    font-family: Arial, sans-serif;
+}
+.icon {
+    color: #4B5563;
+    cursor: pointer;
+    margin-left: 10px;
+    font-family: Arial, sans-serif; 
+}
+
+
+
