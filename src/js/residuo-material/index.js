@@ -17,6 +17,8 @@ const {
 } = ElementosHTML()
 
 const {
+    renderizarNaListaMateriais,
+    renderizarNaListaResiduos,
     alterarParaTelaMaterial,
     alterarParaTelaResiduo,
     getResiduos,
@@ -36,4 +38,9 @@ const {
 botaoAlteraTelaMaterial.addEventListener("click", alterarParaTelaMaterial)
 botaoAlteraTelaResiduos.addEventListener("click", alterarParaTelaResiduo)
 
-document.addEventListener("DOMContentLoaded", getResiduos)
+document.addEventListener("DOMContentLoaded", () => {
+    renderizarNaListaResiduos()
+    renderizarNaListaMateriais()
+    getResiduos()
+
+} )

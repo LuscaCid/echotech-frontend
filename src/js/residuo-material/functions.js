@@ -41,11 +41,46 @@ function FuncoesFabrica ({
             selectResiduo.appendChild(elementoOption)
         }
     }
-    function renderizarNaListaResiduos() {
+    async function renderizarNaListaResiduos() {
+        const resposta = await fetch("http://192.168.0.135:8000/api/residuos/lista")
+        const respostaFormatada = await resposta.json()
+
+        console.log(respostaFormatada)
+        for(const elemento of respostaFormatada) {
+            const elementoHTML = document.createElement("section")
+            elementoHTML.className ="border border-zinc-700 p-2 rounded-md even:bg-zinc-700 odd:bg-zinc-800 flex items-center justify-between"
+           
+            const conteudoDiv = `
+                <span class="text-2xl text-zinc-200">${elemento.nm_residuo}</span>
+                <button id="${elemento.nm_residuo}" class="rounded-md  bg-zinc-700 border-zinc-700">
+                    <img src="../../../assets/trash-red.svg" alt="">
+                </button>
+            `;
+            elementoHTML.innerHTML = conteudoDiv;
+            renderizadorResiduo.appendChild(elementoHTML);
+        }
 
     }
-    function renderizarNaListaMateriais() {
+    async function renderizarNaListaMateriais() {
+        const resposta = await fetch("http://192.168.0.135:8000/api/materiais/lista")
+        const respostaFormatada = await resposta.json()
 
+        console.log(respostaFormatada)
+        for(const elemento of respostaFormatada) {
+            const elementoHTML = document.createElement("section")
+            elementoHTML.className =" bg-zinc-800 p-2 rounded-md flex items-center justify-between border border-zinc-700 p-2  even:bg-zinc-700 odd:bg-zinc-800 "
+           
+            const conteudoDiv = `
+                <span class="text-2xl text-zinc-200">${elemento.nm_material}</span>
+                <span class="text-2xl text-zinc-200">${elemento.vl_ecos}</span>
+                <span class="text-2xl text-zinc-200">${elemento.nm_medida}</span>
+                <button id="${elemento.nm_material}" class="rounded-md bg-zinc-700 border-zinc-700">
+                    <img src="../../../assets/trash-red.svg" alt="">
+                </button>
+            `;
+            elementoHTML.innerHTML = conteudoDiv;
+            renderizadorMaterial.appendChild(elementoHTML);
+        }
     }
     return {
         renderizarNaListaMateriais,

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="stylesheet" href="../../../../styles/scrollbar.css">
     <link rel="stylesheet" href="../../../../dist/output.css">
     <link rel="stylesheet" href="../../../../styles/constants.css">
     <meta charset="UTF-8">
@@ -22,7 +23,7 @@
         </div>
     </header>
     
-    <main class="relative items-center flex min-w-[600px] w-[700px] shadow-md h-[250px] m-auto -mt-12 rounded-md bg-zinc-800 border border-zinc-800">
+    <main class="relative items-center flex min-w-[600px] w-[900px] shadow-md h-[250px] m-auto -mt-12 rounded-md bg-zinc-800 border border-zinc-800">
         <nav class="absolute left-0-0 top-0 bottom-0 w-44 z-20 bg-zinc-950 rounded-md flex flex-col gap-3">
             <h1 class="p-3 text-3xl text-center text-zinc-200 font-bold border-b border-zinc-700">
                 Menu
@@ -58,37 +59,17 @@
         </div>
     </main>
     
-    <footer class="w-[700px] my-4 m-auto mt-2 flex flex-col rounded-md border-zinc-600 border gap-2  p-2  max-h-[320px] overflow-y-auto" >
-        <header id="renderizador-residuo" class="border border-zinc-700 rounded-md p-3 flex flex-col gap-2 ">
+    <footer class="w-[900px] grid grid-cols-2 my-4 m-auto mt-2  rounded-md border-zinc-600 border gap-2  p-2  " >
+        <header id="renderizador-residuo" class="border max-h-[320px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
             <h2 class="text-zinc-100 text-3xl font-bold" >Lista Resíduos</h2>
             <!--elemento renderizado-->
-            <section  class="bg-zinc-800 p-2 rounded-md flex items-center justify-between">
-                <span class="text-2xl text-zinc-200">plastico</span>
-                <button class="rounded-md bg-zinc-700 border-zinc-700">
-                    <img src="../../../assets/trash-red.svg" alt="">
-                </button>
-            </section>
-            <section  class="bg-zinc-800 p-2 rounded-md flex items-center justify-between">
-                <span class="text-2xl text-zinc-200">Metal</span>
-                <button class="rounded-md bg-zinc-700 border-zinc-700">
-                    <img src="../../../assets/trash-red.svg" alt="">
-                </button>
-            </section>
         </header>
         <!-- secao renderizar materiais-->
-        
 
         <!-- secao renderizar residuos-->
-        <footer id="renderizador-material" class="border border-zinc-700 rounded-md p-3 ">
+        <footer id="renderizador-material" class="border max-h-[320px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
             <h2 class="text-zinc-100 text-3xl font-bold" >Lista materiais</h2>
-            <section  class="bg-zinc-800 p-2 rounded-md flex items-center justify-between">
-                <span class="text-2xl text-zinc-200">Latinha</span>
-                <span class="text-2xl text-zinc-200">1 ecos</span>
-                <span class="text-2xl text-zinc-200">kg</span>
-                <button class="rounded-md bg-zinc-700 border-zinc-700">
-                    <img src="../../../assets/trash-red.svg" alt="">
-                </button>
-            </section>
+            
         </footer>    
     </footer>
 
