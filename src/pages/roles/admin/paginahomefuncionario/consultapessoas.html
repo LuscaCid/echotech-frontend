@@ -14,9 +14,8 @@
             margin-left: 10px;
         }
 
-        .edit-icon:hover,
         .remove-icon:hover {
-            color: #13e42f;
+            color: #ff0000; /* Alterando a cor do ícone de remoção quando hover */
         }
 
         .editable {
@@ -70,8 +69,7 @@
                         <td contenteditable="false">200 kg</td>
                         <td contenteditable="false">$Eco 300</td>
                         <td>
-                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
-                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <!-- Removendo ícones de edição e confirmação de edição -->
                             <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
                         </td>
                     </tr>
@@ -81,8 +79,7 @@
                         <td contenteditable="false">100 kg</td>
                         <td contenteditable="false">$Eco 150</td>
                         <td>
-                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
-                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <!-- Removendo ícones de edição e confirmação de edição -->
                             <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
                         </td>
                     </tr>
@@ -92,8 +89,7 @@
                         <td contenteditable="false">50 kg</td>
                         <td contenteditable="false">$Eco 75</td>
                         <td>
-                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
-                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <!-- Removendo ícones de edição e confirmação de edição -->
                             <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
                         </td>
                     </tr>
@@ -103,8 +99,7 @@
                         <td contenteditable="false">80 kg</td>
                         <td contenteditable="false">$Eco 120</td>
                         <td>
-                            <i class="fas fa-edit icon edit-icon" onclick="editRow(this)" title="Editar"></i>
-                            <i class="fas fa-check-circle icon confirm-btn" onclick="confirmUpdate(this)" title="Confirmar"></i>
+                            <!-- Removendo ícones de edição e confirmação de edição -->
                             <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
                         </td>
                     </tr>
@@ -139,27 +134,9 @@
     </script>
 
     <script>
-        function editRow(element) {
-            var row = element.closest("tr");
-            var cells = row.querySelectorAll("td:not(:last-child)");
-
-            cells.forEach(function(cell) {
-                cell.contentEditable = true;
-            });
-        }
-
-        function confirmUpdate(element) {
-            var row = element.closest("tr");
-            var cells = row.querySelectorAll("td:not(:last-child)");
-
-            cells.forEach(function(cell) {
-                cell.contentEditable = false;
-            });
-        }
-
+        // Função para remover a linha da tabela
         function deleteRow(element) {
             var row = element.closest("tr");
-            
             row.remove();
         }
     </script>
