@@ -1,3 +1,5 @@
+import constantes from "../../service/config.js"
+
 export function FuncoesSolicitacao ({
   arrayDeSolicitacoesParaEnviar,
   secaoRenderizacaoSolicitacoes,
@@ -10,7 +12,7 @@ export function FuncoesSolicitacao ({
 {
   // desacoplamento de funcoes para buscar dados e fazer a renderizacao de dados
   async function getResiduosRenderizarSelect() {
-    const resposta = await fetch("http://192.168.0.135:8000/api/residuos/lista")
+    const resposta = await fetch(`${constantes.baseURL}residuos/lista`)
     const respostaFormatada = await resposta.json()
     
     renderizarListaSelect(respostaFormatada)
@@ -38,7 +40,7 @@ export function FuncoesSolicitacao ({
     const tokenParsed = JSON.parse(localstorage)
     const { chave } = tokenParsed
     try {
-      const resposta = await fetch ("http://192.168.0.135:8000/api/solicitacoes/adicionar", {
+      const resposta = await fetch (`${constantes.baseURL}solicitacoes/adicionar`, {
         method : "POST",
         body : formData,
         headers : {  
@@ -58,11 +60,11 @@ export function FuncoesSolicitacao ({
     const selectResiduosId = residuoSelect.value
     if(selectResiduosId != "Selecione") {
       console.log(selectResiduosId)
-      const respostaMateriais = await fetch(`http://192.168.0.135:8000/api/materiais/obter?id_residuo=${selectResiduosId}`)
+      const respostaMateriais = await fetch(`${constantes.baseURL}materiais/obter?id_residuo=${selectResiduosId}`)
       
       const respostaMateriaisFormatada = await respostaMateriais.json()
 
-      console.log(respostaMateriaisFormatada)
+      console.log(respostaMateriaisFormatada, "231  ")
 
       //logica para deletar cada uma das options dentro do select
       const options = materialSelect.querySelectorAll("option")
@@ -75,7 +77,7 @@ export function FuncoesSolicitacao ({
           
         const elementoOption = document.createElement("option")
     
-        elementoOption.value = element.nm_material + "," + element.sg_medida;
+        elementoOption.value = element.nm_material + "," + element.sg_medida + "," + element.vl_eco;
         elementoOption.textContent = element.nm_material;
         elementoOption.className = `option`
 
@@ -88,23 +90,38 @@ export function FuncoesSolicitacao ({
     e.preventDefault();
     try {
       verificarDadosPadres();
-      const [nm_material, sg_medida ] = materialSelect.value.split(",")
+      const [nm_material, sg_medida, vl_eco ] = materialSelect.value.split(",")
       const objetoSolicitacao = {
         id_material : materialSelect.value,
         qt_material : quantidadeInput.value,
         sg_medida : sg_medida,
-        nm_material : nm_material
+        nm_material : nm_material,
+        vl_eco : vl_eco
         
       } 
-      console.log(objetoSolicitacao)
+      
       totalEcoDiv.classList.remove("hidden")
       arrayDeSolicitacoesParaEnviar.push(objetoSolicitacao)
-      console.log(arrayDeSolicitacoesParaEnviar)
+      
+      const total = calcularValorEmEcosCadaElemento(arrayDeSolicitacoesParaEnviar)
+      displayEcos.textContent = total
+      console.log(total)
       renderizarListaSolicitacoes(objetoSolicitacao)
     } catch (exception) {
       window.alert(exception.message)
     }
 
+  }
+  function calcularValorEmEcosCadaElemento(array) {
+    let total = 0;
+    console.log(array)
+    for(let i = 0; i < array.length; i++){
+      let valorPorElemento = Number(array[i].vl_eco) * Number(array[i].qt_material);
+      console.log(valorPorElemento)
+      total += valorPorElemento ;
+    }
+    console.log(total)
+    return total
   }
   function renderizarListaSolicitacoes (objetoSolicitacao) {
     const elementoHTML = document.createElement("section")

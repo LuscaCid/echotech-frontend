@@ -23,7 +23,7 @@
         </div>
     </header>
     
-    <main class="relative items-center flex min-w-[600px] w-[900px] shadow-md h-[250px] m-auto -mt-12 rounded-md bg-zinc-800 border border-zinc-800">
+    <main class="relative items-center flex min-w-[600px] w-[900px] shadow-md h-[250px] m-auto -mt-16 rounded-md bg-zinc-800 border border-zinc-800">
         <nav class="absolute left-0-0 top-0 bottom-0 w-44 z-20 bg-zinc-950 rounded-md flex flex-col gap-3">
             <h1 class="p-3 text-3xl text-center text-zinc-200 font-bold border-b border-zinc-700">
                 Menu
@@ -34,7 +34,7 @@
         <div id="tela-residuo" class=" p-4 relative w-full h-full flex flex-col gap-4 items-center ">
             <div class=" px-5 py-8 text-zinc-200 absolute inset-0 left-44 text-2xl rounded-md border border-zinc-600 flex bg-zinc-700">
                 <form class="flex flex-col gap-5 w-full h-full" >
-                    <label class="text-3xl font-bold border-b border-zinc-800" for="numero">Adicionar novo tipo</label>
+                    <label class="text-3xl font-bold border-b border-zinc-800" for="numero">Adicionar novo tipo de resíduo</label>
                    
                     <input type="text" id="nome-residuo" name="nome" class="rounded-md p-3 bg-zinc-900 border-zinc-600 border" placeholder="Nome" required>
                     <button class="absolute right-2 left-2 bottom-2 font-bold rounded-md p-2 bg-green-500 hover:bg-green-600 transition duration-200 " type="submit">Criar resíduo</button>    
@@ -52,7 +52,7 @@
 
                     <input type="number" id="valor" name="valor" class="rounded-md p-3 bg-zinc-900 border-zinc-600 border" placeholder="Valor" step="5" required>
                     <input type="text" id="nome" name="nome" class="rounded-md p-3 bg-zinc-900 border-zinc-600 border" placeholder="Nome" required>
-                    <button class=" absolute right-2 left-2 bottom-2 font-bold rounded-md p-2 bg-green-500 hover:bg-green-600 transition duration-200 " type="submit">Criar resíduo</button>
+                    <button class=" absolute right-2 left-2 bottom-2 font-bold rounded-md p-2 bg-green-500 hover:bg-green-600 transition duration-200 " type="submit">Criar Material</button>
               
                 </form>
             </div>
@@ -60,14 +60,14 @@
     </main>
     
     <footer class="w-[900px] grid grid-cols-2 my-4 m-auto mt-2  rounded-md border-zinc-600 border gap-2  p-2  " >
-        <header id="renderizador-residuo" class="border max-h-[320px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
+        <header id="renderizador-residuo" class="border max-h-[240px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
             <h2 class="text-zinc-100 text-3xl font-bold" >Lista Resíduos</h2>
             <!--elemento renderizado-->
         </header>
         <!-- secao renderizar materiais-->
 
         <!-- secao renderizar residuos-->
-        <footer id="renderizador-material" class="border max-h-[320px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
+        <footer id="renderizador-material" class="border max-h-[240px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
             <h2 class="text-zinc-100 text-3xl font-bold" >Lista materiais</h2>
             
         </footer>    

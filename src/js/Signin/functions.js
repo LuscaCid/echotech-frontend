@@ -1,3 +1,5 @@
+import Constants from "../../service/config.js"
+
 export function funcoesSingin({
     inputSenha,
     inputEmail
@@ -10,7 +12,7 @@ export function funcoesSingin({
         formularioCampos.append("nm_email", inputEmail.value);
         formularioCampos.append("nm_senha", inputSenha.value);
         console.log(inputSenha)
-        const resposta = await fetch(`http://192.168.0.135:8000/api/logar`, {
+        const resposta = await fetch(`${Constants.baseURL}logar`, {
             method : "POST",
             body : formularioCampos
         });

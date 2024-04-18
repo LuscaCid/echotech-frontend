@@ -1,3 +1,4 @@
+import constantes from "../../service/config.js"
 function FuncoesFabrica ({
     botaoAlteraTelaResiduos,
     botaoAlteraTelaMaterial,
@@ -25,7 +26,7 @@ function FuncoesFabrica ({
     }
     async function getResiduos() 
     {
-        const resposta = await fetch("http://192.168.0.135:8000/api/residuos/lista")
+        const resposta = await fetch(`${constantes.baseURL}residuos/lista`)
         const respostaFormatada = await resposta.json()
         renderizarListaSelectResiduos(respostaFormatada)
     }
@@ -42,7 +43,7 @@ function FuncoesFabrica ({
         }
     }
     async function renderizarNaListaResiduos() {
-        const resposta = await fetch("http://192.168.0.135:8000/api/residuos/lista")
+        const resposta = await fetch(`${constantes.baseURL}residuos/lista`)
         const respostaFormatada = await resposta.json()
 
         console.log(respostaFormatada)
@@ -52,7 +53,7 @@ function FuncoesFabrica ({
            
             const conteudoDiv = `
                 <span class="text-2xl text-zinc-200">${elemento.nm_residuo}</span>
-                <button id="${elemento.nm_residuo}" class="rounded-md  bg-zinc-700 border-zinc-700">
+                <button id="${elemento.nm_residuo}" class="rounded-md  bg-zinc-700 border-zinc-600 hover:bg-zinc-800 transition duration-150 ">
                     <img src="../../../assets/trash-red.svg" alt="">
                 </button>
             `;
@@ -62,7 +63,7 @@ function FuncoesFabrica ({
 
     }
     async function renderizarNaListaMateriais() {
-        const resposta = await fetch("http://192.168.0.135:8000/api/materiais/lista")
+        const resposta = await fetch(`${constantes.baseURL}materiais/lista`)
         const respostaFormatada = await resposta.json()
 
         console.log(respostaFormatada)
@@ -74,7 +75,7 @@ function FuncoesFabrica ({
                 <span class="text-2xl text-zinc-200">${elemento.nm_material}</span>
                 <span class="text-2xl text-zinc-200">${elemento.vl_ecos}</span>
                 <span class="text-2xl text-zinc-200">${elemento.nm_medida}</span>
-                <button id="${elemento.nm_material}" class="rounded-md bg-zinc-700 border-zinc-700">
+                <button id="${elemento.nm_material}" class="rounded-md bg-zinc-700 border-zinc-600 hover:bg-zinc-800 transition duration-150 ">
                     <img src="../../../assets/trash-red.svg" alt="">
                 </button>
             `;

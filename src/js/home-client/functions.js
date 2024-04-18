@@ -1,3 +1,4 @@
+import constantes from "../../service/config.js"
 
 export default function FactoryFuncoes ({
     saudacaoUsuario,
@@ -21,7 +22,7 @@ export default function FactoryFuncoes ({
         const parsed = JSON.parse(dadosLocalstorage)
         const {chave} = parsed
 
-        const response = await fetch("http://192.168.0.135:8000/api/solicitacoes/listaUsuario", {
+        const response = await fetch(`${constantes.baseURL}solicitacoes/listaUsuario`, {
             method : "GET",
             headers : {
                 Authorization : "Bearer " + chave
