@@ -36,8 +36,6 @@ const {
 document.addEventListener("DOMContentLoaded", async () =>  {
     
     const dados = JSON.parse(localStorage.getItem("@ecotech-dados"))
-    const { nm_usuario } = dados;
-    atualizarSaudacao(nm_usuario);
 
     let dadosBuscados = await buscarHistorico();
     //funcao de teste

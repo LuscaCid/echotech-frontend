@@ -40,69 +40,21 @@
         <h1>Consulta de Pessoas</h1>
     </header>
     <main>
-        <section class="center mt-2">
-            <input
-              class="text-2xl text-white rounded-md p-4 bg-zinc-700 border-zinc-600 border"
-              placeholder="Pesquisar" 
-              id="input-pesquisa"
-              type="text">
-              <button id="botao-pesquisa">
-                <span class="search-icon"><i class="fas fa-search"></i></span>
-                Consultar
-            </button>            
-        </section>
+        
         <div class="container center">
             <table>
                 <thead>
                     <tr>
                         <th>Nome do Cliente</th>
-                        <th>Material Residual</th>
-                        <th>Quantidade</th>
-                        <th>Valor em $Eco</th>
-                        <th>Ações</th>
+                        <th>Quantidade em Ecos</th>
+                        <th>Quantidade em Reais</th>
+                        <th>Quantidade Solicitações</th>
+                        <th>Quantidade Recebimentos</th>
+                        
                     </tr>
                 </thead>
                 <tbody id="product-details">
-                    <tr>
-                        <td contenteditable="false">João</td>
-                        <td contenteditable="false">Papel</td>
-                        <td contenteditable="false">200 kg</td>
-                        <td contenteditable="false">$Eco 300</td>
-                        <td>
-                            <!-- Removendo ícones de edição e confirmação de edição -->
-                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td contenteditable="false">Maria</td>
-                        <td contenteditable="false">Plástico</td>
-                        <td contenteditable="false">100 kg</td>
-                        <td contenteditable="false">$Eco 150</td>
-                        <td>
-                            <!-- Removendo ícones de edição e confirmação de edição -->
-                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td contenteditable="false">Carlos</td>
-                        <td contenteditable="false">Vidro</td>
-                        <td contenteditable="false">50 kg</td>
-                        <td contenteditable="false">$Eco 75</td>
-                        <td>
-                            <!-- Removendo ícones de edição e confirmação de edição -->
-                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td contenteditable="false">Ana</td>
-                        <td contenteditable="false">Metal</td>
-                        <td contenteditable="false">80 kg</td>
-                        <td contenteditable="false">$Eco 120</td>
-                        <td>
-                            <!-- Removendo ícones de edição e confirmação de edição -->
-                            <i class="fas fa-trash-alt icon remove-icon" onclick="deleteRow(this)" title="Remover"></i>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
@@ -110,13 +62,12 @@
 
     
     <script>
-        function searchProducts() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("input-pesquisa");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("product-details");
-            tr = table.getElementsByTagName("tr");
+        var input, filter, table, tr, td, i, txtValue;
+        table = document.getElementById("product-details");
+        tr = table.getElementsByTagName("tr");
 
+        function searchProducts() {
+            
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[0];
                 if (td) {
@@ -129,7 +80,35 @@
                 }
             }
         }
+        async function getUsuariosRenderizar() {
+            const storage =JSON.parse(localStorage.getItem("@ecotech-dados"));
+            const {chave} = storage;
+            const resposta = await fetch("http://192.168.0.135:8000/api/usuario/lista", {
+                method : "GET",
+                headers : {
+                    Authorization : "Bearer " + chave
+                }
+            })
+            const respostaFormatada = await resposta.json()
 
+            for(const pessoa of respostaFormatada) {
+                const conteudoDiv = `
+                <tr>
+                    <td >${pessoa.nm_usuario}</td>
+                    <td >${pessoa.total_ecorecebido ?? 0} ecos</td>
+                    <td >R$${pessoa.total_realrecebido ?? 0}</td>
+                    <td >${pessoa.qt_solicitacoes}</td>
+                    <td >${pessoa.qt_recebimentos}</td>
+                    
+                </tr>
+                `
+                const elementoHTML = document.createElement("tr")
+                elementoHTML.innerHTML = conteudoDiv;
+                table.appendChild(elementoHTML)
+            }
+        }
+        getUsuariosRenderizar()
+        searchProducts()
         document.getElementById("input-pesquisa").addEventListener("keyup", searchProducts);
     </script>
 

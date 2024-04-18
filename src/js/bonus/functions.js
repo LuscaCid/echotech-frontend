@@ -28,29 +28,30 @@ function FabricaDeFuncoes ({
     for(const produto of vetorDeProdutos) {
       const elementoHTML = document.createElement("div");
       elementoHTML.className ="group";
+      
       const conteudoDiv = `
       <div class="bg-transparent  h-[400px] max-w-96 w-fit rounded-lg flex flex-col gap-1 hover:bg-zinc-800 transition duration-200 ">
-        <div class="overflow-hidden">
-          <img 
-          class="group-hover:scale-110 min-h[360px] transition duration-300 w-96 h-96 rounded-t-lg "
-          src="${produto.nm_imagem}" 
-          >
-        </div>
-        
-        <div id="${produto.id_produto}" class="p-2 text-zinc-100 flex flex-col gap-2">
-          <h2 class="text-4xl">${produto.nm_produto}</h2>
-          <p class="text-2xl">${produto.ds_produto}</p>
-          <span  class="text-2xl flex items-center ">
-            <img src="../../../assets/coin.svg"> <p class=" text-3xl text-green-400"> ${produto.vl_eco} ecos</p>
-          </span>
-          <button" class="botao-carrinho flex items-center justify-between rounded-md p-4 transition duration-150 bg-green-600 text-zinc-100 font-bold text-2xl hover:bg-green-700">
-            Adicionar <img src="../../../assets/cart-add.svg" alt="">
-          </button>
-        </div>
+      <div class="overflow-hidden">
+      <img 
+      class="group-hover:scale-110 min-h[360px] transition duration-300 w-96 h-96 rounded-t-lg "
+      src="${produto.nm_imagem}" 
+      >
+      </div>
+      
+      <div id="${produto.id_produto}" class="p-2 text-zinc-100 flex flex-col gap-2">
+      <h2 class="text-4xl">${produto.nm_produto}</h2>
+      <p class="text-2xl">${produto.ds_produto}</p>
+      <span  class="text-2xl flex items-center ">
+      <img src="../../../assets/coin.svg"> <p class=" text-3xl text-green-400"> ${produto.vl_eco} ecos</p>
+      </span>
+      <button" class="disabled:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-10 botao-carrinho flex items-center justify-between rounded-md p-4 transition duration-150 bg-green-600 text-zinc-100 font-bold text-2xl hover:bg-green-700">
+      Adicionar <img src="../../../assets/cart-add.svg" alt="">
+      </button>
+      </div>
       </div>
       `
       elementoHTML.innerHTML= conteudoDiv;
-    renderizarProdutos.appendChild(elementoHTML)
+      renderizarProdutos.appendChild(elementoHTML)
     
   }
   //apos renderizar os elementos, pego os botoes e aciono eventos para cada um
@@ -61,9 +62,6 @@ function FabricaDeFuncoes ({
       const elementoPai = botao.parentElement;
 
       const elementoPesquisado = vetorDeProdutos.find(produto => produto.id_produto == elementoPai.id)
-
-      console.log(elementoPesquisado)
-
       const produtoSelecionadoPropriedades = {
         nome_produto : elementoPesquisado.nm_produto,
         preco_produto : elementoPesquisado.vl_eco,
@@ -84,7 +82,8 @@ function FabricaDeFuncoes ({
 
     const getProdutosDoLocalstorage = localStorage.getItem("@ecotech-carrinho")
     let arrayParaInsercaoLocalStorage; // isto vai ser retornado para ser renderizado
-    if(!getProdutosDoLocalstorage) {
+    if(!getProdutosDoLocalstorage)
+    {
       arrayParaInsercaoLocalStorage = [produtoSelecionadoPropriedades]
       let jsonStrinfied = JSON.stringify(arrayParaInsercaoLocalStorage)
       localStorage.setItem("@ecotech-carrinho", jsonStrinfied)
@@ -93,11 +92,8 @@ function FabricaDeFuncoes ({
       arrayParaInsercaoLocalStorage.push(produtoSelecionadoPropriedades)
 
       localStorage.setItem("@ecotech-carrinho", JSON.stringify(arrayParaInsercaoLocalStorage))
-
     }
-
     return arrayParaInsercaoLocalStorage;
-
   }
   function renderizarCarrinhoAdicionando (produtoCarrinho) {
     const conteudoDiv = `
@@ -185,7 +181,6 @@ function FabricaDeFuncoes ({
 
   function atualizarRenderizadorDeValor() {
     const displayTotalCarrinho = reducaoValorProdutos()
-    console.log(renderizarEcoCoins)
     if(Number(renderizarEcoCoins.textContent) < displayTotalCarrinho){
       console.log("true ")
       totalEcosDisplayCarrinho.classList.add("text-red-500")
@@ -202,7 +197,6 @@ function FabricaDeFuncoes ({
     const dadosLocastorage = localStorage.getItem("@ecotech-carrinho")
     const parsedArray = JSON.parse(dadosLocastorage)
 
-    console.log(parsedArray)
     if(parsedArray.length > 0) {
       let total = 0;
       for(let i = 0; i < parsedArray.length; i++){
@@ -227,15 +221,15 @@ function FabricaDeFuncoes ({
   async function manipularEnvioFormularioBusca(event) {
     event.preventDefault()
     
-    console.log(inputPesquisar.value)
-    
     await new Promise(resolver => setTimeout(resolver, 3000))
   }
 
   async function finalizarCompra(arrayDoCarrinho) {
     const formData = new FormData()
-    formData.append("lista_produtos", JSON.stringify(arrayDoCarrinho))
-    console.log(arrayDoCarrinho)
+    const novoArrayApenasDeId = arrayDoCarrinho.map(element => element.id_produto)
+
+    formData.append("lista_produtos", JSON.stringify({lista : novoArrayApenasDeId}))
+
     const response = await fetch(`${constantes.baseURL}produtos/comprar`, {
       method : "POST",
       body : formData,
@@ -244,6 +238,12 @@ function FabricaDeFuncoes ({
       }
     })
     const respostaFormatada = await response.json()
+
+    renderizarEcoCoins.textContent = respostaFormatada.saldo
+    const storage = JSON.parse(localStorage.getItem("@ecotech-dados"))
+    storage.qt_ecosaldo = respostaFormatada.saldo
+    localStorage.setItem("@ecotech-dados", JSON.stringify(storage))
+    
     window.alert(respostaFormatada.codigo);
   }
 

@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     const dadosUsuarioLogado  =JSON.parse(localStorage.getItem("@ecotech-dados"))
     const {qt_ecosaldo} = dadosUsuarioLogado  
+    console.log(qt_ecosaldo)
     renderizarEcoCoins.textContent = qt_ecosaldo;
     atualizarRenderizadorDeValor()
   //contem um array retornado do backend com os produtos cadastrados pelos funcionarios
@@ -71,6 +72,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 //preciso observar campo de pesquisa, caso vazio, entao nao se pode apertar o botao de pesquisar
 
 //o envio deste formulario mudará o valor
-formularioBuscaProdutos.addEventListener("submit", manipularEnvioFormularioBusca)
 
 //para renderizar os produtos inicialmente, precisa-se busca-los no backend, entao primeiramente se chama a funcao getprodutos

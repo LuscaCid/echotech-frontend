@@ -1,8 +1,9 @@
 function ElementosPaginaSignUp() {
   
   //credenciais
-  const usuario = document.getElementById("usuario");
+  const email = document.getElementById("email");
   const senha = document.getElementById("senha");
+  const nome = document.getElementById("nome")
   
   // elementos de endereço
   const estado = document.getElementById("estado");
@@ -24,12 +25,13 @@ function ElementosPaginaSignUp() {
     secaoEnderecos,
     listaEnderecos,
     formulario,
-    usuario,
+    email,
     senha,
     estado,
     cidade,
     bairro,
     numero,
+    nome,
     rua,
     cep,
   }

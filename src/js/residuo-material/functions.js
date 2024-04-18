@@ -67,6 +67,7 @@ function FuncoesFabrica ({
     {
         const resposta = await fetch(`${constantes.baseURL}residuos/lista`)
         const respostaFormatada = await resposta.json()
+        console.log(respostaFormatada)
         renderizarListaSelectResiduos(respostaFormatada)
     }
 

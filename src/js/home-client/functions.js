@@ -72,13 +72,11 @@ export default function FactoryFuncoes ({
         }
     }
 
-    function atualizarSaudacao (nm_usuario) {
-        saudacaoUsuario.innerText = nm_usuario
-    }
+    
     return {
         renderizarListaSolicitacoes,
         filtrarDadosPeloInput,
-        atualizarSaudacao,
+        
         buscarHistorico,
     }
 }

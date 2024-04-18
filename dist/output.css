@@ -688,6 +688,11 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
 .-mt-16 {
   margin-top: -4rem;
 }
@@ -726,6 +731,18 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .flex {
@@ -837,16 +854,16 @@ video {
   width: 100%;
 }
 
-.w-\[450px\] {
-  width: 450px;
+.w-\[\] {
+  width: ;
 }
 
-.w-\[430px\] {
-  width: 430px;
+.w-\[600px\] {
+  width: 600px;
 }
 
-.w-\[770px\] {
-  width: 770px;
+.w-\[840px\] {
+  width: 840px;
 }
 
 .min-w-\[400px\] {
@@ -1178,6 +1195,11 @@ video {
   color: rgb(74 222 128 / var(--tw-text-opacity));
 }
 
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
+}
+
 .text-green-600 {
   --tw-text-opacity: 1;
   color: rgb(22 163 74 / var(--tw-text-opacity));
@@ -1216,11 +1238,6 @@ video {
 .text-zinc-300 {
   --tw-text-opacity: 1;
   color: rgb(212 212 216 / var(--tw-text-opacity));
-}
-
-.text-green-500 {
-  --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 
 .shadow-2xl {
@@ -1384,8 +1401,17 @@ body, button, textarea, input {
   cursor: not-allowed;
 }
 
+.disabled\:bg-zinc-800:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+}
+
 .disabled\:opacity-5:disabled {
   opacity: 0.05;
+}
+
+.disabled\:opacity-10:disabled {
+  opacity: 0.1;
 }
 
 .disabled\:hover\:bg-none:hover:disabled {

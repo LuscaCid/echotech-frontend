@@ -44,7 +44,7 @@ header a:hover{
   justify-content: space-between;
   display: flex;
   width: min(110rem, 90%);
-  height: 40rem;
+  height: 45rem;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 .app form {

@@ -8,6 +8,8 @@ export function funcoesSingin({
     async function ManipularEnvioFormulario (event) {
         event.preventDefault();
 
+        if(inputEmail.value == "" || inputSenha == "")return window.alert("Preencha todos os campos!")
+
         const formularioCampos = new FormData();
         formularioCampos.append("nm_email", inputEmail.value);
         formularioCampos.append("nm_senha", inputSenha.value);
@@ -19,33 +21,18 @@ export function funcoesSingin({
 
         localStorage.setItem('@ecotech-dados', JSON.stringify(respostaFormatada));
 
+        
         if(respostaFormatada.codigo == "falha") {
             return window.alert(respostaFormatada.codigo, "Ao Logar.")
         }
-        
-        
-    } 
-    //private function
-    function redirecionamentoUsuario(retornoLogin) {
-        const {
-            nm_usuario : nome,
-            nm_cargo : cargo
-        } = retornoLogin
-        
-        switch(cargo) {
-            //client
+        switch(respostaFormatada.nu_cargo) {
             case 0: 
-                break;
-            //funcionario
+                return window.location.href = "../roles/client/index.html"
             case 1:
-
-                break;
-            // admin
-            case 2: 
-                break;
-
+                return window.location.href = "../roles/admin/paginahomefuncionario/index.html"
         }
-    }
+
+    } 
 
     return {
         ManipularEnvioFormulario

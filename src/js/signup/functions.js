@@ -1,3 +1,4 @@
+import { constantes } from "../../service/config.js"
 
 function FuncoesPaginaSignUp({
   bairro, 
@@ -5,9 +6,9 @@ function FuncoesPaginaSignUp({
   estado, 
   rua, 
   numero,
-  usuario,
   senha,
-
+  nome,
+  email,
   listaEnderecos,
   arrayDeEnderecos,
   secaoEnderecos,
@@ -59,6 +60,7 @@ function FuncoesPaginaSignUp({
     btnDeleteArr.forEach(botao => {
       botao.addEventListener("click" ,()=> deletarEndereco(botao))
     })
+    console.log(arrayDeEnderecos)
   }
 
   function deletarEndereco(elemento) 
@@ -76,7 +78,7 @@ function FuncoesPaginaSignUp({
 
   function certificarCamposCredenciais() 
   {
-    return usuario.value != "" && senha.value != ""
+    return nome.value != "" && senha.value != ""
   }
   //e : FormEvent<HTMLFormELement>
   async function manipularEnvioDoFormulario(e) 
@@ -89,9 +91,16 @@ function FuncoesPaginaSignUp({
     if(arrayDeEnderecos.length == 0 )return alert("Adicione ao menos um endereco!")
     //test
     const formData = new FormData()
-    formData.append("usuario" , usuario.value)
-    formData.append("senha" , usuario.value)
-    formData.append("arrayDeEnderecos" , arrayDeEnderecos)
+    formData.append("nm_usuario" , nome.value)
+    formData.append("nm_email" , email.value)
+    formData.append("nm_senha" , senha.value)
+    formData.append("lista_enderecos" ,JSON.stringify(arrayDeEnderecos) )
+
+    const resposta = await fetch(`${constantes.baseURL}cadastrar`, {
+      body : formData,
+      method : "POST"
+    });
+    return console.log( resposta.json()) ;
 
     //const resposta = await api.post("clients/registrar", formData);
     //return resposta.data ;

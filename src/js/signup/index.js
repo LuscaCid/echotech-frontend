@@ -10,7 +10,8 @@ const {
   numero,
   rua,
 
-  usuario,
+  nome,
+  email,
   senha,
 
   botaoAdicionarEndereco,
@@ -33,9 +34,9 @@ const {
     estado, 
     rua, 
     numero, 
-    usuario,
     senha,
-
+    nome,
+    email,
     listaEnderecos, 
     arrayDeEnderecos,
     secaoEnderecos
@@ -55,7 +56,6 @@ cep.addEventListener("change", async () => {
       console.log(error)
     }
   }
-
 })
 
 botaoAdicionarEndereco.addEventListener("click", () => {
