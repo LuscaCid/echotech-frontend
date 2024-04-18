@@ -1,8 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: -20px auto 20px; 
     padding: 0;
     background-color: var(--gray-900);
+    overflow: hidden;
 }
 
 header {
@@ -16,7 +17,7 @@ header {
 
 header a {
     text-decoration: none;
-    font-size: 24px;
+    font-size: 15px;
     font-weight: bold;
     color: var(--gray-100);
 }
@@ -26,9 +27,9 @@ header button {
     color: #fff;
     cursor: pointer;
     font-size: 14px; 
-    padding: 8px 16px; 
+    padding: 8px 10px; 
     margin-right: 10px;
-    border-radius: 8px;
+    border-radius: 2px;
     border: 2px solid var(--gray-700); 
     transition: background 0.2s;
 }
@@ -130,5 +131,9 @@ h2 {
 #link-imagem:valid {
     color: blue; 
     text-decoration: underline; 
+}
+header h1 {
+    font-size: 20px; 
+    margin-right: 20px; 
 }
 

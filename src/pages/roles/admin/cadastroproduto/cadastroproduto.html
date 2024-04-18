@@ -9,10 +9,10 @@
 </head>
 <body>
     <header>
-        <a href="../paginahomefuncionario/index.html">EcoTech</a>
+        <a href="../paginahomefuncionario/index.html"><h1>EcoTech</h1></a>
         <div>
-            <button class="logout-btn"><a href="http://seu-link-de-logout.com">Logout</a></button>
-            <button class="voltar-btn"><a href="http://127.0.0.1:5500/src/pages/roles/admin/paginahomefuncionario/index.html">Voltar</a></button>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+            <button class="voltar-btn" id="voltarBtn">Voltar</button>
         </div>
     </header>
     
@@ -36,5 +36,16 @@
             </form>
         </div>
     </main>
+
+    <script>
+        document.getElementById('voltarBtn').addEventListener('click', function() {
+            history.back(); // Redireciona para a página anterior
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            // Redireciona para a página de logout
+            window.location.href = 'http://127.0.0.1:5500/index.html';
+        });
+    </script>
 </body>
 </html>
