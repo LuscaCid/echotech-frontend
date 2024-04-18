@@ -9,9 +9,9 @@ function ElementosHtmlFactory () {
   const botaoComprar = document.getElementById("botao-comprar");
   
   const formularioBuscaProdutos = document.getElementById("formulario-busca-produto");
-
+  const totalEcosDisplayCarrinho = document.getElementById("total-ecos");
   return {
-
+    totalEcosDisplayCarrinho,
     formularioBuscaProdutos,
     renderizarProdutos,
     renderizarCarrinho,

@@ -8,10 +8,49 @@ function FuncoesFabrica ({
     inputNomeResiduo,
     selectResiduo,
     telaMaterial,
+    selectMedida,
     telaResiduo,
     inputValor,
 }) 
 {
+    async function manipularEnvioFormularioResiduo(e) {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append("nm_residuo", inputNomeResiduo.value)
+
+        
+        const resposta = await fetch(`${constantes.baseURL}residuos/adicionar`, {
+            method : "POST",
+            body : formData,
+            headers : {
+                Authorization : "Bearer " + constantes.token
+            }
+        })
+        const respostaFormatada = await resposta.json()
+
+        window.alert(respostaFormatada)
+    }
+    
+    async function manipularEnvioFormularioMaterial(e) {
+        e.preventDefault()
+        const formData = new FormData()
+        formData.append("nm_residuo", selectResiduo.value)
+        formData.append("nm_material",inputNomeMaterial.value)
+        formData.append("vl_eco",inputNomeMaterial.value)
+        formData.append("sg_medida", selectMedida.value)
+        
+        const resposta = await fetch(`${constantes.baseURL}materiais/adicionar`, {
+            method : "POST",
+            body : formData,
+            headers : {
+                Authorization : "Bearer " + constantes.token
+            }
+        })
+        const respostaFormatada = await resposta.json()
+
+        window.alert(respostaFormatada)
+        
+    }
 
     function alterarParaTelaResiduo() {
         telaMaterial.classList.add("hidden")
@@ -84,6 +123,8 @@ function FuncoesFabrica ({
         }
     }
     return {
+        manipularEnvioFormularioMaterial,
+        manipularEnvioFormularioResiduo,
         renderizarNaListaMateriais,
         renderizarNaListaResiduos,
         alterarParaTelaMaterial,

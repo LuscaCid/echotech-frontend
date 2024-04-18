@@ -11,12 +11,15 @@ const {
     inputNomeMaterial,
     inputNomeResiduo,
     selectResiduo,
+    selectMedida,
     telaMaterial,
     inputValor,
     telaResiduo
 } = ElementosHTML()
 
 const {
+    manipularEnvioFormularioMaterial,
+    manipularEnvioFormularioResiduo,
     renderizarNaListaMateriais,
     renderizarNaListaResiduos,
     alterarParaTelaMaterial,
@@ -31,6 +34,7 @@ const {
     inputNomeResiduo,
     selectResiduo,
     telaMaterial,
+    selectMedida,
     telaResiduo,
     inputValor,
 })
@@ -38,6 +42,8 @@ const {
 botaoAlteraTelaMaterial.addEventListener("click", alterarParaTelaMaterial)
 botaoAlteraTelaResiduos.addEventListener("click", alterarParaTelaResiduo)
 
+formularioResiduo.addEventListener("submit", manipularEnvioFormularioResiduo )
+formularioMaterial.addEventListener("submit", manipularEnvioFormularioMaterial)
 document.addEventListener("DOMContentLoaded", () => {
     renderizarNaListaResiduos()
     renderizarNaListaMateriais()

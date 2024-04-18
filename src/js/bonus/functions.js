@@ -1,18 +1,20 @@
 // na hora de renderizar 
-import dataMocked from "./mock.js"
+import constantes from "../../service/config.js"
 function FabricaDeFuncoes ({
+  botaoComprar,
   inputPesquisar,
   renderizarProdutos, 
   renderizarCarrinho : secaoRenderizarCarrinho,
+  totalEcosDisplayCarrinho,
   renderizarEcoCoins //elemento html que se trata da div que contem os produtos alocados
 }) {
 
   async function getProdutos() {
     //simulacao de fetch na api para obter os produtos
-    //const resposta = await fetch("http://localhost:8000/produtos/lista")
-    //const data = resposta.json()
-
-    return dataMocked;
+    const resposta = await fetch(`${constantes.baseURL}produtos/lista`)
+    const data = await resposta.json()
+    console.log(data)
+    return data.lista;
 
   }
 
@@ -27,15 +29,15 @@ function FabricaDeFuncoes ({
         <div class="overflow-hidden">
           <img 
           class="group-hover:scale-110 min-h[360px] transition duration-300 w-96 h-96 rounded-t-lg "
-          src="${produto.caminho_imagem}" 
+          src="${produto.nm_imagem}" 
           >
         </div>
         
         <div id="${produto.id_produto}" class="p-2 text-zinc-100 flex flex-col gap-2">
-          <h2 class="text-4xl">${produto.nome}</h2>
-          <p class="text-2xl">${produto.descricao}</p>
+          <h2 class="text-4xl">${produto.nm_produto}</h2>
+          <p class="text-2xl">${produto.ds_produto}</p>
           <span  class="text-2xl flex items-center ">
-            <img src="../../../assets/coin.svg"> <p class=" text-3xl text-green-400">  ${produto.preco}</p>
+            <img src="../../../assets/coin.svg"> <p class=" text-3xl text-green-400"> ${produto.vl_eco} ecos</p>
           </span>
           <button" class="botao-carrinho flex items-center justify-between rounded-md p-4 transition duration-150 bg-green-600 text-zinc-100 font-bold text-2xl hover:bg-green-700">
             Adicionar <img src="../../../assets/cart-add.svg" alt="">
@@ -45,22 +47,23 @@ function FabricaDeFuncoes ({
       `
       elementoHTML.innerHTML= conteudoDiv;
     renderizarProdutos.appendChild(elementoHTML)
-
     
   }
+  //apos renderizar os elementos, pego os botoes e aciono eventos para cada um
   const botoesRenderizados = document.getElementsByClassName("botao-carrinho")
   
   for(const botao of botoesRenderizados) {
     botao.addEventListener("click", () => {
       const elementoPai = botao.parentElement;
 
-      const elementoPesquisado = dataMocked.find(produto => produto.id_produto == elementoPai.id)
+        
+      const elementoPesquisado = vetorDeProdutos.find(produto => produto.id_produto == elementoPai.id)
 
       console.log(elementoPesquisado)
 
       const produtoSelecionadoPropriedades = {
-        nome_produto : elementoPesquisado.nome,
-        preco_produto : elementoPesquisado.preco,
+        nome_produto : elementoPesquisado.nm_produto,
+        preco_produto : elementoPesquisado.vl_eco,
         id_produto : elementoPesquisado.id_produto
       }
       if(verificarPresencaCarrinho(produtoSelecionadoPropriedades)){
@@ -128,10 +131,12 @@ function FabricaDeFuncoes ({
 
         const arrayFiltrado = arrayParsed.filter(element => element.id_produto != idExcluido)
         localStorage.setItem("@ecotech-carrinho", JSON.stringify(arrayFiltrado))
-        
+        atualizarRenderizadorDeValor()
       })
     }
-    reducaoValorProdutos()
+    const ecoCoinsDisplay = reducaoValorProdutos()
+    totalEcosDisplayCarrinho.innerText = ecoCoinsDisplay
+    
   }
   function renderizarCarrinhoLocalstorage(arrayParaRenderizar) {
     
@@ -170,10 +175,27 @@ function FabricaDeFuncoes ({
         const arrayFiltrado = arrayParsed.filter(element => element.id_produto != idExcluido)
         localStorage.setItem("@ecotech-carrinho", JSON.stringify(arrayFiltrado))
 
+        atualizarRenderizadorDeValor()
       })
+     
     }
-    reducaoValorProdutos()
+    atualizarRenderizadorDeValor()
   }
+
+
+  function atualizarRenderizadorDeValor() {
+    const displayTotalCarrinho = reducaoValorProdutos()
+    console.log(renderizarEcoCoins)
+    if(Number(renderizarEcoCoins.textContent) < displayTotalCarrinho){
+      console.log("true ")
+      totalEcosDisplayCarrinho.classList.add("text-red-500")
+      totalEcosDisplayCarrinho.classList.remove("text-zinc-200")
+      botaoComprar.setAttribute("disabled", "")
+    } 
+    
+    totalEcosDisplayCarrinho.innerText = displayTotalCarrinho ?? 0 + " ecos"
+  }
+
 
   function reducaoValorProdutos() {
     //como a remocao e a adicao de novos produtos atualizam o localstorage, eu vou apenas me basear por la
@@ -182,11 +204,16 @@ function FabricaDeFuncoes ({
     const parsedArray = JSON.parse(dadosLocastorage)
 
     console.log(parsedArray)
-    const totalAtualizado = parsedArray.reduce((acumulador, valorAtual) => {
-      return acumulador + valorAtual.preco_produto
-
-    })
-    console.log(totalAtualizado)
+    if(parsedArray.length > 0) {
+      let total = 0;
+      for(let i = 0; i < parsedArray.length; i++){
+        let valorPorElemento = Number(parsedArray[i].preco_produto) ;
+        total += valorPorElemento ;
+      }
+      console.log(total)
+      return total;
+    }
+    
 
   }
 

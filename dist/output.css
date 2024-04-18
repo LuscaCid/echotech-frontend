@@ -648,6 +648,30 @@ video {
   top: 0.5rem;
 }
 
+.left-4 {
+  left: 1rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.left-6 {
+  left: 1.5rem;
+}
+
+.right-6 {
+  right: 1.5rem;
+}
+
+.right-5 {
+  right: 1.25rem;
+}
+
+.left-5 {
+  left: 1.25rem;
+}
+
 .z-20 {
   z-index: 20;
 }
@@ -760,12 +784,16 @@ video {
   height: 100vh;
 }
 
-.h-\[20px\] {
-  height: 20px;
+.h-\[270px\] {
+  height: 270px;
 }
 
-.h-\[200px\] {
-  height: 200px;
+.h-\[260px\] {
+  height: 260px;
+}
+
+.max-h-\[240px\] {
+  max-height: 240px;
 }
 
 .max-h-\[270px\] {
@@ -788,16 +816,12 @@ video {
   max-height: 450px;
 }
 
-.max-h-\[300px\] {
-  max-height: 300px;
+.max-h-\[220px\] {
+  max-height: 220px;
 }
 
-.max-h-\[250px\] {
-  max-height: 250px;
-}
-
-.max-h-\[240px\] {
-  max-height: 240px;
+.max-h-\[230px\] {
+  max-height: 230px;
 }
 
 .min-h-\[400px\] {
@@ -1374,6 +1398,18 @@ body, button, textarea, input {
 .active\:text-green-500:active {
   --tw-text-opacity: 1;
   color: rgb(34 197 94 / var(--tw-text-opacity));
+}
+
+.disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+.disabled\:opacity-5:disabled {
+  opacity: 0.05;
+}
+
+.disabled\:hover\:bg-none:hover:disabled {
+  background-image: none;
 }
 
 .group:hover .group-hover\:scale-110 {

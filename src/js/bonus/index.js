@@ -3,16 +3,17 @@ import FabricaDeFuncoes from "./functions.js";
 import ElementosHtmlFactory from "./elements.js";
 
 const {
+  totalEcosDisplayCarrinho,
   inputPesquisar,
   formularioBuscaProdutos,
   botaoComprar,
   renderizarCarrinho,
   renderizarEcoCoins,
-  renderizarProdutos
+  renderizarProdutos,
+  
 } = ElementosHtmlFactory()
 
 
-let contextoProdutos = [] // este contexto contera os produtos a serem renderizados,
 /**
  * [{
  *    nome : string
@@ -21,25 +22,28 @@ let contextoProdutos = [] // este contexto contera os produtos a serem renderiza
  *    caminho_imagem : string
  * },]
  * 
- */
-let dadosEmJson = localStorage.getItem("@ecotech-carrinho") || null;
-let produtosCarrinho = JSON.parse(dadosEmJson);
+*/
+const dadosEmJson = localStorage.getItem("@ecotech-carrinho") || null;
+const produtosCarrinho = JSON.parse(dadosEmJson);
 
 const {
   getProdutos,
   renderizarSecaoProdutos,
   manipularEnvioFormularioBusca,
   renderizarCarrinhoLocalstorage
-  } = FabricaDeFuncoes({
+} = FabricaDeFuncoes({
+  totalEcosDisplayCarrinho,
   inputPesquisar,
   renderizarProdutos, 
   renderizarCarrinho,
-  renderizarEcoCoins
+  renderizarEcoCoins,
+  botaoComprar
 })
 
 document.addEventListener("DOMContentLoaded", async () => {
   
-    contextoProdutos = await getProdutos();
+   // este contexto contera os produtos a serem renderizados,
+    const contextoProdutos = await getProdutos();
    
     renderizarSecaoProdutos(contextoProdutos)
     const dataStorage = localStorage.getItem("@ecotech-carrinho")
@@ -48,8 +52,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       renderizarCarrinhoLocalstorage(parsed)
     }
-  
-  
+    
+    const dadosUsuarioLogado  =JSON.parse(localStorage.getItem("@ecotech-dados"))
+    const {qt_ecosaldo} = dadosUsuarioLogado  
+    renderizarEcoCoins.textContent = qt_ecosaldo;
   //contem um array retornado do backend com os produtos cadastrados pelos funcionarios
 })
 

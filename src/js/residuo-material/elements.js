@@ -5,6 +5,7 @@ function ElementosHTML () {
     const selectResiduo = document.getElementById("residuo")
     const inputNomeResiduo = document.getElementById("nome-residuo")
     
+    const selectMedida = document.getElementById("tipo-medida")
     const formularioResiduo = document.getElementById("formulario-residuo")
     const inputValor = document.getElementById("valor")
     const inputNomeMaterial = document.getElementById("nome")
@@ -26,6 +27,7 @@ function ElementosHTML () {
         inputNomeMaterial,
         inputNomeResiduo,
         selectResiduo,
+        selectMedida,
         telaMaterial,
         telaResiduo,
         inputValor,
