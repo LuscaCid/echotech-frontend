@@ -93,8 +93,6 @@ function FuncoesPaginaSignUp({
     formData.append("senha" , usuario.value)
     formData.append("arrayDeEnderecos" , arrayDeEnderecos)
 
-    console.log(usuario.value, senha.value)
-    console.log(formData)
     //const resposta = await api.post("clients/registrar", formData);
     //return resposta.data ;
     

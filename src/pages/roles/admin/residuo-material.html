@@ -37,7 +37,7 @@
                     <label class="text-3xl font-bold border-b border-zinc-800" for="numero">Adicionar novo tipo de resíduo</label>
                    
                     <input type="text" id="nome-residuo" name="nome" class="rounded-md p-3 bg-zinc-900 border-zinc-600 border" placeholder="Nome" required>
-                    <button class="absolute right-2 left-2 bottom-2 font-bold rounded-md p-2 bg-green-500 hover:bg-green-600 transition duration-200 " type="submit">Criar resíduo</button>    
+                    <button type="submit" class="absolute right-2 left-2 bottom-2 font-bold rounded-md p-2 bg-green-500 hover:bg-green-600 transition duration-200 " type="submit">Criar resíduo</button>    
                 </form>
             </div>
         </div>
@@ -50,29 +50,27 @@
                     <select id="residuo" class="rounded-md p-3 bg-zinc-900 border-zinc-600 border" id="tipo-residuo">
                         <option value="selecione">Selecione o tipo de residuo</option>
                     </select>
-                    <input type="number" id="valor" name="valor" class="rounded-md p-3 bg-zinc-900 border-zinc-600 border" placeholder="Valor" step="5" required>
+                    <input type="number" id="valor" name="valor" class="rounded-md p-3 bg-zinc-900 border-zinc-600 border" placeholder="Valor" required>
                     <select id="tipo-medida" class="rounded-md p-3 bg-zinc-900 border-zinc-600 border" id="tipo-residuo">
-                        
                         <option value="selecione">Selecione o tipo de medida</option>
                         <option value="kg">Kg</option>
                         <option value="lt">L</option>
                     </select>
-                    <button class=" absolute right-5 left-5 bottom-2 font-bold rounded-md p-2 bg-green-500 hover:bg-green-600 transition duration-200 " type="submit">Criar Material</button>
-              
+                    <button type="submit" class=" absolute right-5 left-5 bottom-2 font-bold rounded-md p-2 bg-green-500 hover:bg-green-600 transition duration-200 " type="submit">Criar Material</button>
                 </form>
             </div>
         </div>
     </main>
     
     <footer class="w-[900px] grid grid-cols-2 my-4 m-auto mt-2  rounded-md border-zinc-600 border gap-2  p-2  " >
-        <header id="renderizador-residuo" class="border max-h-[230px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
+        <header id="renderizador-residuo" class="border max-h-[290px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
             <h2 class="text-zinc-100 text-3xl font-bold" >Lista Resíduos</h2>
             <!--elemento renderizado-->
         </header>
         <!-- secao renderizar materiais-->
 
         <!-- secao renderizar residuos-->
-        <footer id="renderizador-material" class="border max-h-[230px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
+        <footer id="renderizador-material" class="border max-h-[290px] overflow-y-auto border-zinc-700 rounded-md p-3 flex flex-col gap-5 ">
             <h2 class="text-zinc-100 text-3xl font-bold" >Lista materiais</h2>
             
         </footer>    

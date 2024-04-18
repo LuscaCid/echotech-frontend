@@ -1,5 +1,5 @@
 // na hora de renderizar 
-import constantes from "../../service/config.js"
+import {constantes, getChaveAcesso} from "../../service/config.js"
 function FabricaDeFuncoes ({
   botaoComprar,
   inputPesquisar,
@@ -11,7 +11,11 @@ function FabricaDeFuncoes ({
 
   async function getProdutos() {
     //simulacao de fetch na api para obter os produtos
-    const resposta = await fetch(`${constantes.baseURL}produtos/lista`)
+    const resposta = await fetch(`${constantes.baseURL}produtos/lista`, {
+      headers : {
+        Authorization : "Bearer " + getChaveAcesso()
+      }
+    })
     const data = await resposta.json()
     console.log(data)
     return data.lista;
@@ -56,7 +60,6 @@ function FabricaDeFuncoes ({
     botao.addEventListener("click", () => {
       const elementoPai = botao.parentElement;
 
-        
       const elementoPesquisado = vetorDeProdutos.find(produto => produto.id_produto == elementoPai.id)
 
       console.log(elementoPesquisado)
@@ -67,10 +70,7 @@ function FabricaDeFuncoes ({
         id_produto : elementoPesquisado.id_produto
       }
       if(verificarPresencaCarrinho(produtoSelecionadoPropriedades)){
-        const aceitaAdicionarOmesmo = window.confirm("Deseja adicionar o mesmo produto mais de uma vez?")
-        if(!aceitaAdicionarOmesmo) {
-          return
-        }
+        return window.alert("Não é possivel adicionar o mesmo produto ao carrinho")
       } 
       adicionarAoLocalStorage(produtoSelecionadoPropriedades)
       renderizarCarrinhoAdicionando(produtoSelecionadoPropriedades)
@@ -113,7 +113,7 @@ function FabricaDeFuncoes ({
       elementoHTML.className = "w-full border-collapse odd:bg-zinc-700 even:bg-zinc-800";
       elementoHTML.innerHTML = conteudoDiv
       secaoRenderizarCarrinho.append(elementoHTML);
-
+      atualizarRenderizadorDeValor()
       const botoesRenderizados = document.getElementsByClassName("botao-apagar")
   
     for(const botao of botoesRenderizados) {
@@ -157,6 +157,7 @@ function FabricaDeFuncoes ({
 
       secaoRenderizarCarrinho.append(elementoHTML);
     }
+    atualizarRenderizadorDeValor()
     const botoesRenderizados = document.getElementsByClassName("botao-apagar")
   
     for(const botao of botoesRenderizados) {
@@ -182,7 +183,6 @@ function FabricaDeFuncoes ({
     atualizarRenderizadorDeValor()
   }
 
-
   function atualizarRenderizadorDeValor() {
     const displayTotalCarrinho = reducaoValorProdutos()
     console.log(renderizarEcoCoins)
@@ -195,7 +195,6 @@ function FabricaDeFuncoes ({
     
     totalEcosDisplayCarrinho.innerText = displayTotalCarrinho ?? 0 + " ecos"
   }
-
 
   function reducaoValorProdutos() {
     //como a remocao e a adicao de novos produtos atualizam o localstorage, eu vou apenas me basear por la
@@ -213,8 +212,6 @@ function FabricaDeFuncoes ({
       console.log(total)
       return total;
     }
-    
-
   }
 
   function verificarPresencaCarrinho (produtoSelecionadoPropriedades) {
@@ -235,10 +232,27 @@ function FabricaDeFuncoes ({
     await new Promise(resolver => setTimeout(resolver, 3000))
   }
 
+  async function finalizarCompra(arrayDoCarrinho) {
+    const formData = new FormData()
+    formData.append("lista_produtos", JSON.stringify(arrayDoCarrinho))
+    console.log(arrayDoCarrinho)
+    const response = await fetch(`${constantes.baseURL}produtos/comprar`, {
+      method : "POST",
+      body : formData,
+      headers : {
+        Authorization : "Bearer " + getChaveAcesso()
+      }
+    })
+    const respostaFormatada = await response.json()
+    window.alert(respostaFormatada.codigo);
+  }
+
   return {
+    atualizarRenderizadorDeValor,
     renderizarCarrinhoLocalstorage,
     manipularEnvioFormularioBusca,
     renderizarSecaoProdutos,
+    finalizarCompra,
     getProdutos,
   }
 }

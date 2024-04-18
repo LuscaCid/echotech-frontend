@@ -1,4 +1,4 @@
-import constantes from "../../service/config.js"
+import {constantes, getChaveAcesso} from "../../service/config.js"
 
 export default function FactoryFuncoes ({
     saudacaoUsuario,
@@ -21,7 +21,7 @@ export default function FactoryFuncoes ({
         const dadosLocalstorage = localStorage.getItem("@ecotech-dados")
         const parsed = JSON.parse(dadosLocalstorage)
         const {chave} = parsed
-
+        console.log(getChaveAcesso())
         const response = await fetch(`${constantes.baseURL}solicitacoes/listaUsuario`, {
             method : "GET",
             headers : {
@@ -46,15 +46,15 @@ export default function FactoryFuncoes ({
             switch(elemento.vl_status) {
                 case 1: 
                         statusDisplay.text = "Aprovado"
-                        statusDisplay.color = "text-green-600"
+                        statusDisplay.color = "text-green-600 font-bold"
                     break;
                     case 0: 
                         statusDisplay.text = "Aguardando"
-                        statusDisplay.color = "text-yellow-600"
+                        statusDisplay.color = "text-yellow-600 font-bold"
                     break;
                     case -1:
                         statusDisplay.text = "Cancelado"
-                        statusDisplay.color = "text-red-600"
+                        statusDisplay.color = "text-red-600 font-bold"
                     break;
             } 
             console.log(statusDisplay)

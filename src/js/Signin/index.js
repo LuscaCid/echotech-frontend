@@ -8,8 +8,6 @@ const {
 } = elementsHtml();
 
 
-console.log(inputSenha)
-console.log(inputEmail)
 
 const { ManipularEnvioFormulario } = funcoesSingin({
     inputEmail,

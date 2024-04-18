@@ -27,10 +27,12 @@ const dadosEmJson = localStorage.getItem("@ecotech-carrinho") || null;
 const produtosCarrinho = JSON.parse(dadosEmJson);
 
 const {
+  finalizarCompra,
   getProdutos,
   renderizarSecaoProdutos,
   manipularEnvioFormularioBusca,
-  renderizarCarrinhoLocalstorage
+  renderizarCarrinhoLocalstorage,
+  atualizarRenderizadorDeValor
 } = FabricaDeFuncoes({
   totalEcosDisplayCarrinho,
   inputPesquisar,
@@ -38,6 +40,12 @@ const {
   renderizarCarrinho,
   renderizarEcoCoins,
   botaoComprar
+})
+
+botaoComprar.addEventListener("click", () => {
+  const dataStorage = localStorage.getItem("@ecotech-carrinho")
+  const parsed = JSON.parse(dataStorage)
+  finalizarCompra(parsed)
 })
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -56,6 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const dadosUsuarioLogado  =JSON.parse(localStorage.getItem("@ecotech-dados"))
     const {qt_ecosaldo} = dadosUsuarioLogado  
     renderizarEcoCoins.textContent = qt_ecosaldo;
+    atualizarRenderizadorDeValor()
   //contem um array retornado do backend com os produtos cadastrados pelos funcionarios
 })
 

@@ -1,4 +1,4 @@
-import constantes from "../../service/config.js"
+import {constantes, getChaveAcesso} from "../../service/config.js"
 
 export function FuncoesSolicitacao ({
   arrayDeSolicitacoesParaEnviar,
@@ -12,7 +12,12 @@ export function FuncoesSolicitacao ({
 {
   // desacoplamento de funcoes para buscar dados e fazer a renderizacao de dados
   async function getResiduosRenderizarSelect() {
-    const resposta = await fetch(`${constantes.baseURL}residuos/lista`)
+    const resposta = await fetch(`${constantes.baseURL}residuos/lista`, {
+      method : "GET",
+      headers : {  
+        Authorization : "Bearer " + getChaveAcesso()
+    }
+    })
     const respostaFormatada = await resposta.json()
     
     renderizarListaSelect(respostaFormatada)
@@ -36,15 +41,12 @@ export function FuncoesSolicitacao ({
     //os dados serao enviados dentro de um array
     formData.append("lista_materiais",JSON.stringify(arrayDeSolicitacoesParaEnviar))
     
-    const localstorage = localStorage.getItem("@ecotech-dados")
-    const tokenParsed = JSON.parse(localstorage)
-    const { chave } = tokenParsed
     try {
       const resposta = await fetch (`${constantes.baseURL}solicitacoes/adicionar`, {
         method : "POST",
         body : formData,
         headers : {  
-          Authorization : "Bearer " + chave
+          Authorization : "Bearer " + getChaveAcesso()
         }
       })
       const respostaFormatada = await resposta.json()
@@ -59,17 +61,14 @@ export function FuncoesSolicitacao ({
   async function dispararEventoParaMudarValoresSelectMateriais() {        
     const selectResiduosId = residuoSelect.value
     if(selectResiduosId != "Selecione") {
-      console.log(selectResiduosId)
       const respostaMateriais = await fetch(`${constantes.baseURL}materiais/obter?id_residuo=${selectResiduosId}`)
       
       const respostaMateriaisFormatada = await respostaMateriais.json()
 
-      console.log(respostaMateriaisFormatada, "231  ")
 
       //logica para deletar cada uma das options dentro do select
       const options = materialSelect.querySelectorAll("option")
       for(const option of options) {
-          console.log(option)
           option.remove()
       }
       //logica para renderizar os novos dados dentro do select posteriormente limpo
@@ -82,7 +81,6 @@ export function FuncoesSolicitacao ({
         elementoOption.className = `option`
 
         materialSelect.appendChild(elementoOption)
-        console.log(residuoSelect)
       }
     }  
   } 
@@ -105,7 +103,6 @@ export function FuncoesSolicitacao ({
       
       const total = calcularValorEmEcosCadaElemento(arrayDeSolicitacoesParaEnviar)
       displayEcos.textContent = total
-      console.log(total)
       renderizarListaSolicitacoes(objetoSolicitacao)
     } catch (exception) {
       window.alert(exception.message)
@@ -114,13 +111,10 @@ export function FuncoesSolicitacao ({
   }
   function calcularValorEmEcosCadaElemento(array) {
     let total = 0;
-    console.log(array)
     for(let i = 0; i < array.length; i++){
       let valorPorElemento = Number(array[i].vl_eco) * Number(array[i].qt_material);
-      console.log(valorPorElemento)
       total += valorPorElemento ;
     }
-    console.log(total)
     return total
   }
   function renderizarListaSolicitacoes (objetoSolicitacao) {
@@ -140,7 +134,6 @@ export function FuncoesSolicitacao ({
     const botaoElementoHTML = elementoHTML.lastElementChild
 
     botaoElementoHTML.addEventListener("click", () => deletarElementoSolicitado(botaoElementoHTML))
-    console.log(botaoElementoHTML)
   }
 
   function verificarDadosPadres() {
@@ -160,10 +153,8 @@ export function FuncoesSolicitacao ({
     elementoPaiBotao.remove()
 
     arrayDeSolicitacoesParaEnviar = arrayDeSolicitacoesParaEnviar.filter(elemento => {
-      console.log(nm_material,elemento.nm_material)
       return elemento.nm_material != nm_material
     }   )
-    console.log(arrayDeSolicitacoesParaEnviar)
     if(arrayDeSolicitacoesParaEnviar.length == 0)totalEcoDiv.classList.add("hidden")
     
   }

@@ -42,8 +42,9 @@ const {
 botaoAlteraTelaMaterial.addEventListener("click", alterarParaTelaMaterial)
 botaoAlteraTelaResiduos.addEventListener("click", alterarParaTelaResiduo)
 
-formularioResiduo.addEventListener("submit", manipularEnvioFormularioResiduo )
+formularioResiduo.addEventListener("submit", manipularEnvioFormularioResiduo)
 formularioMaterial.addEventListener("submit", manipularEnvioFormularioMaterial)
+
 document.addEventListener("DOMContentLoaded", () => {
     renderizarNaListaResiduos()
     renderizarNaListaMateriais()

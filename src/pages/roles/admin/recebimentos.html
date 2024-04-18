@@ -12,7 +12,7 @@
 </head>
 <body class="bg-zinc-900">
     <!--modal da pagina para ver detalhes do recebimento clicado-->
-    <div id="modal" class="  absolute inset-0 place-items-center flex items-center justify-center bg-zinc-950/80 h-screen w-full ">
+    <div id="modal" class="hidden  absolute inset-0 place-items-center flex items-center justify-center bg-zinc-950/80 h-screen w-full ">
         <div class="relative border z-20 border-zinc-700 w-[400px] py-8 px-6 bg-zinc-800 rounded-md">
             <button id="fechar-modal" class="font-bold absolute top-2 right-2 bg-zinc-600 rounded-md text-red-500 p-2 hover:bg-zinc-700 transition duration-100" >X</button>
             <legend class="mb-4 text-zinc-200 text-3xl font-bold">Detalhes da solicitação</legend>
@@ -44,7 +44,7 @@
           </button>
         </div>
     </header>
-    <main class="w-[750px] m-auto flex flex-col gap-2  p-2  ">
+    <main class="w-[800px] m-auto flex flex-col gap-2  p-2  ">
         <form id="pesquisa-solicitacao" class="flex w-full gap-4 my-6">
             <input id="pesquisa" type="text" placeholder="Pesquisar" class="focus:ring-4 text-2xl p-4 rounded-md bg-zinc-800 text-zinc-200 w-full">
             <button type="submit" class="bg-zinc-800 border border-zinc-700 p-2 rounded-md hover:bg-zinc-900 transition duration-100">

@@ -1,4 +1,4 @@
-import constantes from "../../service/config.js"
+import {constantes, getChaveAcesso} from "../../service/config.js"
 function FuncoesFabrica ({
     botaoAlteraTelaResiduos,
     botaoAlteraTelaMaterial,
@@ -17,13 +17,12 @@ function FuncoesFabrica ({
         e.preventDefault()
         const formData = new FormData()
         formData.append("nm_residuo", inputNomeResiduo.value)
-
         
         const resposta = await fetch(`${constantes.baseURL}residuos/adicionar`, {
             method : "POST",
             body : formData,
             headers : {
-                Authorization : "Bearer " + constantes.token
+                Authorization : "Bearer " + getChaveAcesso()
             }
         })
         const respostaFormatada = await resposta.json()
@@ -43,11 +42,11 @@ function FuncoesFabrica ({
             method : "POST",
             body : formData,
             headers : {
-                Authorization : "Bearer " + constantes.token
+                Authorization : "Bearer " + getChaveAcesso()
             }
         })
         const respostaFormatada = await resposta.json()
-
+        console.log(respostaFormatada)
         window.alert(respostaFormatada)
         
     }
@@ -62,6 +61,7 @@ function FuncoesFabrica ({
 
         telaMaterial.classList.remove("hidden")
         telaResiduo.classList.add("hidden")
+        getResiduos()
     }
     async function getResiduos() 
     {
@@ -109,11 +109,11 @@ function FuncoesFabrica ({
         for(const elemento of respostaFormatada) {
             const elementoHTML = document.createElement("section")
             elementoHTML.className =" bg-zinc-800 p-2 rounded-md flex items-center justify-between border border-zinc-700 p-2  even:bg-zinc-700 odd:bg-zinc-800 "
-           
+            console.log(elemento)
             const conteudoDiv = `
                 <span class="text-2xl text-zinc-200">${elemento.nm_material}</span>
-                <span class="text-2xl text-zinc-200">${elemento.vl_ecos}</span>
-                <span class="text-2xl text-zinc-200">${elemento.nm_medida}</span>
+                <span class="text-2xl text-zinc-200">${elemento.vl_eco} ecos</span>
+                <span class="text-2xl text-zinc-200">${elemento.sg_medida}</span>
                 <button id="${elemento.nm_material}" class="rounded-md bg-zinc-700 border-zinc-600 hover:bg-zinc-800 transition duration-150 ">
                     <img src="../../../assets/trash-red.svg" alt="">
                 </button>

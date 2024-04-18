@@ -1,0 +1,5 @@
+const inputNomeProduto = document.getElementById("nome-produto")
+const inputDescricaoProduto = document.getElementById("descricao")
+const inputLinkImagemProduto = document.getElementById("link-imagem")
+const inputValorProduto = document.getElementById("preco")
+const inputQuantidadeProduto = document.getElementById("quantidade")

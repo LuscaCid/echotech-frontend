@@ -1,4 +1,4 @@
-import Constants from "../../service/config.js"
+import {constantes, getChaveAcesso } from "../../service/config.js"
 
 export function funcoesSingin({
     inputSenha,
@@ -11,8 +11,7 @@ export function funcoesSingin({
         const formularioCampos = new FormData();
         formularioCampos.append("nm_email", inputEmail.value);
         formularioCampos.append("nm_senha", inputSenha.value);
-        console.log(inputSenha)
-        const resposta = await fetch(`${Constants.baseURL}logar`, {
+        const resposta = await fetch(`${constantes.baseURL}logar`, {
             method : "POST",
             body : formularioCampos
         });
@@ -20,7 +19,6 @@ export function funcoesSingin({
 
         localStorage.setItem('@ecotech-dados', JSON.stringify(respostaFormatada));
 
-        console.log(respostaFormatada)
         if(respostaFormatada.codigo == "falha") {
             return window.alert(respostaFormatada.codigo, "Ao Logar.")
         }
